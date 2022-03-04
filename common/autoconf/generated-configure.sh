@@ -1944,7 +1944,7 @@ Optional Packages:
                           Add a custom string to the version string if build
                           number isn't set.[username_builddateb00]
   --with-build-number     Set build number value for build [b00]
-  --with-company-name     Set company name
+  --with-company-name     Set company name.
   --with-vendor-name      Set vendor name. Among others, used to set the
                           'java.vendor' and 'java.vm.vendor' system
                           properties. [not specified]
@@ -4968,7 +4968,7 @@ VS_SDK_PLATFORM_NAME_2017=
 #CUSTOM_AUTOCONF_INCLUDE
 
 # Do not change or remove the following line, it is needed for consistency checks:
-DATE_WHEN_GENERATED=1645701114
+DATE_WHEN_GENERATED=1646406721
 
 ###############################################################################
 #
@@ -21663,10 +21663,24 @@ fi
 
   # Now set the JDK version, milestone, build number etc.
 
+
+
+
+
+
+
+
+
+
+
+
+
+
   # The company name, if any
 
 # Check whether --with-company-name was given.
-if test "${with_company_name+set}" = set; then :
+if test ${with_company_name+y}
+then :
   withval=$with_company_name;
 fi
 
@@ -21677,6 +21691,7 @@ fi
   elif test "x$with_company_name" != x; then
     COMPANY_NAME="$with_company_name"
   fi
+
 
   # The vendor name, if any
 
