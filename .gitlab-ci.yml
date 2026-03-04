@@ -1,0 +1,193 @@
+---
+# GitLab CI/CD pipeline for aarch32-port-jdk8u
+#
+# Builds OpenJDK 8 for ARM32 (armhf / AArch32 hard-float) on an ARM64 runner
+# that supports 32-bit userspace execution, then verifies the image by running
+# the jdk_tier1 and hotspot_tier1 jtreg regression test groups.
+#
+# Runner requirement: tags "linux k8s aarch64 arm64 16x32 dind zulu"
+
+workflow:
+  rules:
+    # Run on every push to any branch and on merge-request pipelines
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_COMMIT_BRANCH
+
+stages:
+  - build
+  - test
+
+# ── Shared variables ────────────────────────────────────────────────────────
+
+variables:
+  # Azul Zulu 8 for AArch64 – used as the build-host (boot) JDK.
+  BOOT_JDK_ARCHIVE: "zulu8.90.0.19-ca-jdk8.0.472-linux_aarch64.tar.gz"
+  BOOT_JDK_URL: "https://cdn.azul.com/zulu/bin/zulu8.90.0.19-ca-jdk8.0.472-linux_aarch64.tar.gz"
+  BOOT_JDK_DIR: "zulu8.90.0.19-ca-jdk8.0.472-linux_aarch64"
+
+  # jtreg – test harness.
+  # Version must satisfy the minimum stated in hotspot/test/TEST.ROOT (4.2 b13).
+  JTREG_VERSION: "7.3.1+1"
+  JTREG_ARCHIVE: "jtreg-7.3.1+1.tar.gz"
+  JTREG_URL: "https://github.com/openjdk/jtreg/releases/download/jtreg-7.3.1%2B1/jtreg-7.3.1+1.tar.gz"
+
+  # Parallel jobs – matches the 16-core capacity advertised by the runner tag.
+  JOBS: "16"
+
+# ── Runner template ──────────────────────────────────────────────────────────
+
+.arm64_runner:
+  image: debian:11
+  tags:
+    - linux
+    - k8s
+    - aarch64
+    - arm64
+    - 16x32
+    - dind
+    - zulu
+
+# ── Build ────────────────────────────────────────────────────────────────────
+
+build_jdk:
+  extends: .arm64_runner
+  stage: build
+  before_script:
+    # ── 1. Add ARM hard-float (armhf) architecture and install packages ──────
+    - dpkg --add-architecture armhf
+    - apt-get update -qq
+    - |
+      DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+        ca-certificates rsync make gcc g++ zip unzip autoconf \
+        file wget curl libz-dev procps pandoc \
+        gcc-10-arm-linux-gnueabihf g++-10-arm-linux-gnueabihf \
+        libx11-dev:armhf libxext-dev:armhf libxrender-dev:armhf \
+        libxrandr-dev:armhf libxtst-dev:armhf libxt-dev:armhf \
+        libcups2-dev:armhf libfontconfig1-dev:armhf libasound2-dev:armhf \
+        libfreetype6-dev:armhf libpng-dev:armhf libstdc++-10-dev:armhf \
+        libz-dev:armhf
+    # ── 2. Register versioned cross-compiler as the default alternative ───────
+    - |
+      update-alternatives \
+        --install /usr/bin/arm-linux-gnueabihf-gcc arm-linux-gnueabihf-gcc \
+        /usr/bin/arm-linux-gnueabihf-gcc-10 100
+    - |
+      update-alternatives \
+        --install /usr/bin/arm-linux-gnueabihf-g++ arm-linux-gnueabihf-g++ \
+        /usr/bin/arm-linux-gnueabihf-g++-10 100
+    # ── 3. Download and unpack the Zulu 8 aarch64 boot JDK ───────────────────
+    - wget -q -O "${BOOT_JDK_ARCHIVE}" "${BOOT_JDK_URL}"
+    - tar -xzf "${BOOT_JDK_ARCHIVE}"
+    - echo "Boot JDK -> ${CI_PROJECT_DIR}/${BOOT_JDK_DIR}"
+    # ── 4. Download and unpack jtreg (needed by configure --with-jtreg) ───────
+    - wget -q -O "${JTREG_ARCHIVE}" "${JTREG_URL}"
+    - tar -xzf "${JTREG_ARCHIVE}"
+    - echo "jtreg -> ${CI_PROJECT_DIR}/jtreg"
+
+  script:
+    # ── Configure ─────────────────────────────────────────────────────────────
+    - |
+      bash ./configure \
+        --with-bootjdk="${CI_PROJECT_DIR}/${BOOT_JDK_DIR}" \
+        --openjdk-target=arm-linux-gnueabihf \
+        --with-jtreg="${CI_PROJECT_DIR}/jtreg" \
+        --with-jobs=${JOBS} \
+        --with-debug-level=release
+    # ── Build JDK + JRE images ────────────────────────────────────────────────
+    - make images JOBS=${JOBS} LOG=info
+    # ── Record the build-output directory name for downstream jobs ────────────
+    - echo "BUILD_DIR=$(ls build/ | head -1)" | tee build.env
+
+  artifacts:
+    name: "jdk8-aarch32-${CI_COMMIT_SHORT_SHA}"
+    paths:
+      # Capture the JDK/JRE images regardless of the exact build-dir name
+      - build/*/images/
+      - build.env
+    reports:
+      dotenv: build.env
+    expire_in: 1 week
+
+# ── Test ─────────────────────────────────────────────────────────────────────
+
+test_jtreg:
+  extends: .arm64_runner
+  stage: test
+  needs:
+    - job: build_jdk
+      artifacts: true
+  before_script:
+    # ── 1. Install ARM32 runtime libraries so the built JDK can execute ───────
+    - dpkg --add-architecture armhf
+    - apt-get update -qq
+    - |
+      DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+        ca-certificates wget \
+        libx11-6:armhf libxext6:armhf libxrender1:armhf libxrandr2:armhf \
+        libxtst6:armhf libxt6:armhf libcups2:armhf libfontconfig1:armhf \
+        libasound2:armhf libfreetype6:armhf libpng16-16:armhf libstdc++6:armhf
+    # ── 2. Download boot JDK again (needed to run jtreg itself on aarch64) ────
+    - wget -q -O "${BOOT_JDK_ARCHIVE}" "${BOOT_JDK_URL}"
+    - tar -xzf "${BOOT_JDK_ARCHIVE}"
+    # ── 3. Unpack jtreg (downloaded into artifacts by the build job) ──────────
+    - wget -q -O "${JTREG_ARCHIVE}" "${JTREG_URL}"
+    - tar -xzf "${JTREG_ARCHIVE}"
+
+  script:
+    # Resolve the JDK image path produced by the build stage
+    - |
+      TEST_JDK=$(find "${CI_PROJECT_DIR}/build" -maxdepth 3 \
+                      -name "j2sdk-image" -type d | head -1)
+      if [ -z "${TEST_JDK}" ]; then
+        echo "ERROR: j2sdk-image not found in build artifacts"; exit 1
+      fi
+      echo "Test JDK: ${TEST_JDK}"
+    # Confirm the ARM32 java binary is present and the kernel can execute it
+    - file "${TEST_JDK}/bin/java"
+    - "${TEST_JDK}/bin/java" -version
+
+    # ── Run jdk_tier1 (java.lang / java.util / java.math / jdi) ──────────────
+    - |
+      "${CI_PROJECT_DIR}/jtreg/bin/jtreg" \
+        -jdk:"${TEST_JDK}" \
+        -agentvm \
+        -timeout:120 \
+        -verbose:fail,error \
+        -xml \
+        -report:"${CI_PROJECT_DIR}/jtreg-results/jdk" \
+        -dir:"${CI_PROJECT_DIR}/jdk/test" \
+        :jdk_tier1
+      JDK_RC=$?
+
+    # ── Run hotspot_tier1 (sanity + compiler + GC + runtime checks) ───────────
+    - |
+      "${CI_PROJECT_DIR}/jtreg/bin/jtreg" \
+        -jdk:"${TEST_JDK}" \
+        -agentvm \
+        -timeout:120 \
+        -verbose:fail,error \
+        -xml \
+        -report:"${CI_PROJECT_DIR}/jtreg-results/hotspot" \
+        -dir:"${CI_PROJECT_DIR}/hotspot/test" \
+        :hotspot_tier1
+      HOTSPOT_RC=$?
+
+    # ── Print combined summary ────────────────────────────────────────────────
+    - |
+      echo "=== Test Summary ==="
+      for summary in "${CI_PROJECT_DIR}/jtreg-results"/*/JTreport/text/summary.txt; do
+        echo "--- ${summary} ---"
+        cat "${summary}" || true
+        echo ""
+      done
+
+    # Fail the job if either test run reported failures
+    - exit $(( JDK_RC | HOTSPOT_RC ))
+
+  artifacts:
+    name: "jtreg-results-${CI_COMMIT_SHORT_SHA}"
+    # Always upload results so failures can be investigated
+    when: always
+    paths:
+      - jtreg-results/
+    expire_in: 1 week
