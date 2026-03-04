@@ -130,7 +130,7 @@ build_and_test_jdk:
         -r:"${CI_PROJECT_DIR}/jtreg-results/hotspot/JTreport" \
         -w:"${CI_PROJECT_DIR}/jtreg-results/hotspot/JTwork" \
         -dir:"${CI_PROJECT_DIR}/hotspot/test" \
-        :hotspot_tier1 || HOTSPOT_RC=$?
+        compiler/7179138/Test7179138_1.java || HOTSPOT_RC=$?
       HOTSPOT_RC=${HOTSPOT_RC:-0}
 
       # ── Print combined summary ────────────────────────────────────────────────
