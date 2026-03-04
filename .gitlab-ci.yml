@@ -14,8 +14,7 @@ workflow:
     - if: $CI_COMMIT_BRANCH
 
 stages:
-  - build
-  - test
+  - build_and_test
 
 # ── Shared variables ────────────────────────────────────────────────────────
 
@@ -34,9 +33,9 @@ variables:
   # Parallel jobs – matches the 16-core capacity advertised by the runner tag.
   JOBS: "16"
 
-# ── Runner template ──────────────────────────────────────────────────────────
+# ── Build and Test (single job) ──────────────────────────────────────────────
 
-.arm64_runner:
+build_and_test_jdk:
   image: debian:11
   tags:
     - linux
@@ -46,20 +45,18 @@ variables:
     - 16x32
     - dind
     - zulu
+  stage: build_and_test
 
-# ── Build ────────────────────────────────────────────────────────────────────
-
-build_jdk:
-  extends: .arm64_runner
-  stage: build
   before_script:
     # ── 1. Add ARM hard-float (armhf) architecture and install packages ──────
+    #    The *-dev:armhf packages pull in their runtime counterparts as
+    #    dependencies, so a single install step covers both build and test.
     - dpkg --add-architecture armhf
     - apt-get update -qq
     - |
       DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
         ca-certificates rsync make gcc g++ zip unzip autoconf \
-        file wget curl libz-dev procps pandoc \
+        wget curl libz-dev procps pandoc \
         gcc-10-arm-linux-gnueabihf g++-10-arm-linux-gnueabihf \
         libx11-dev:armhf libxext-dev:armhf libxrender-dev:armhf \
         libxrandr-dev:armhf libxtst-dev:armhf libxt-dev:armhf \
@@ -103,53 +100,16 @@ build_jdk:
         --with-debug-level=release
     # ── Build JDK + JRE images ────────────────────────────────────────────────
     - make images JOBS=${JOBS} LOG=info
-    # ── Record the build-output directory name for downstream jobs ────────────
-    - echo "BUILD_DIR=$(ls build/ | head -1)" | tee build.env
 
-  artifacts:
-    name: "jdk8-aarch32-${CI_COMMIT_SHORT_SHA}"
-    paths:
-      # Capture the JDK/JRE images regardless of the exact build-dir name
-      - build/*/images/
-      - build.env
-    reports:
-      dotenv: build.env
-    expire_in: 1 week
-
-# ── Test ─────────────────────────────────────────────────────────────────────
-
-test_jtreg:
-  extends: .arm64_runner
-  stage: test
-  needs:
-    - job: build_jdk
-      artifacts: true
-  before_script:
-    # ── 1. Install ARM32 runtime libraries so the built JDK can execute ───────
-    - dpkg --add-architecture armhf
-    - apt-get update -qq
-    - |
-      DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-        ca-certificates wget \
-        libx11-6:armhf libxext6:armhf libxrender1:armhf libxrandr2:armhf \
-        libxtst6:armhf libxt6:armhf libcups2:armhf libfontconfig1:armhf \
-        libasound2:armhf libfreetype6:armhf libpng16-16:armhf libstdc++6:armhf
-    # ── 2. Download boot JDK again (needed to run jtreg itself on aarch64) ────
-    - wget --no-verbose -O "${BOOT_JDK_ARCHIVE}" "${BOOT_JDK_URL}"
-    - tar -xzf "${BOOT_JDK_ARCHIVE}"
-    # ── 3. Download and unpack jtreg ─────────────────────────────────────────
-    - wget --no-verbose -O "${JTREG_ARCHIVE}" "${JTREG_URL}"
-    - mkdir -p jtreg && tar -xzf "${JTREG_ARCHIVE}" --strip-components=1 -C jtreg
-
-  script:
-    # Resolve the JDK image path produced by the build stage
+    # ── Locate the built JDK image ────────────────────────────────────────────
     - |
       TEST_JDK=$(find "${CI_PROJECT_DIR}/build" -maxdepth 3 \
                       -name "j2sdk-image" -type d | head -1)
       if [ -z "${TEST_JDK}" ]; then
-        echo "ERROR: j2sdk-image not found in build artifacts"; exit 1
+        echo "ERROR: j2sdk-image not found"; exit 1
       fi
       echo "Test JDK: ${TEST_JDK}"
+
     # Confirm the ARM32 JVM starts correctly on this aarch64 kernel
     - ${TEST_JDK}/bin/java -version
 
@@ -192,9 +152,9 @@ test_jtreg:
     - exit $(( JDK_RC | HOTSPOT_RC ))
 
   artifacts:
-    name: "jtreg-results-${CI_COMMIT_SHORT_SHA}"
-    # Always upload results so failures can be investigated
+    name: "jdk8-aarch32-${CI_COMMIT_SHORT_SHA}"
     when: always
     paths:
+      - build/*/images/
       - jtreg-results/
     expire_in: 1 week
