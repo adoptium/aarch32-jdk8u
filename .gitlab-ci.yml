@@ -57,7 +57,7 @@ build_and_test_jdk:
     - |
       DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
         ca-certificates rsync make gcc g++ zip unzip autoconf \
-        file wget curl libz-dev procps pandoc \
+        file wget curl libz-dev procps python3 \
         gcc-10-arm-linux-gnueabihf g++-10-arm-linux-gnueabihf \
         libx11-dev:armhf libxext-dev:armhf libxrender-dev:armhf \
         libxrandr-dev:armhf libxtst-dev:armhf libxt-dev:armhf \
