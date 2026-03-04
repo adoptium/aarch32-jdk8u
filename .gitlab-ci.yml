@@ -26,9 +26,9 @@ variables:
 
   # jtreg – test harness (from Azul internal nexus).
   # Version must satisfy the minimum stated in hotspot/test/TEST.ROOT (4.2 b13).
-  JTREG_VERSION: "8.2.1+1"
-  JTREG_ARCHIVE: "jtreg-8.2.1+1.tar.gz"
-  JTREG_URL: "https://nexus.azulsystems.com/repository/zulu-binaries/jtreg/jtreg-8.2.1%2B1.tar.gz"
+  JTREG_VERSION: "5.1-b01"
+  JTREG_ARCHIVE: "jtreg-5.1-b01.tar.gz"
+  JTREG_URL: "https://nexus.azulsystems.com/repository/zulu-binaries/jtreg/jtreg-5.1-b01.tar.gz"
 
   # Parallel jobs – matches the 16-core capacity advertised by the runner tag.
   JOBS: "16"
