@@ -98,6 +98,7 @@ build_jdk:
         --with-boot-jdk="${CI_PROJECT_DIR}/${BOOT_JDK_DIR}" \
         --openjdk-target=arm-linux-gnueabihf \
         --with-jtreg="${CI_PROJECT_DIR}/jtreg" \
+        --with-jvm-variants=client \
         --with-jobs=${JOBS} \
         --with-debug-level=release
     # ── Build JDK + JRE images ────────────────────────────────────────────────
