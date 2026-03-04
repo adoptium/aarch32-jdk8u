@@ -25,11 +25,11 @@ variables:
   BOOT_JDK_URL: "https://cdn.azul.com/zulu/bin/zulu8.90.0.19-ca-jdk8.0.472-linux_aarch64.tar.gz"
   BOOT_JDK_DIR: "zulu8.90.0.19-ca-jdk8.0.472-linux_aarch64"
 
-  # jtreg – test harness.
+  # jtreg – test harness (from Azul internal nexus).
   # Version must satisfy the minimum stated in hotspot/test/TEST.ROOT (4.2 b13).
-  JTREG_VERSION: "7.3.1+1"
-  JTREG_ARCHIVE: "jtreg-7.3.1+1.tar.gz"
-  JTREG_URL: "https://github.com/openjdk/jtreg/releases/download/jtreg-7.3.1%2B1/jtreg-7.3.1+1.tar.gz"
+  JTREG_VERSION: "8.2.1+1"
+  JTREG_ARCHIVE: "jtreg-8.2.1+1.tar.gz"
+  JTREG_URL: "https://nexus.azulsystems.com/repository/zulu-binaries/jtreg/jtreg-8.2.1%2B1.tar.gz"
 
   # Parallel jobs – matches the 16-core capacity advertised by the runner tag.
   JOBS: "16"
@@ -76,13 +76,13 @@ build_jdk:
         --install /usr/bin/arm-linux-gnueabihf-g++ arm-linux-gnueabihf-g++ \
         /usr/bin/arm-linux-gnueabihf-g++-10 100
     # ── 3. Download and unpack the Zulu 8 aarch64 boot JDK ───────────────────
-    - wget -q -O "${BOOT_JDK_ARCHIVE}" "${BOOT_JDK_URL}"
+    - wget --no-verbose -O "${BOOT_JDK_ARCHIVE}" "${BOOT_JDK_URL}"
     - tar -xzf "${BOOT_JDK_ARCHIVE}"
     - echo "Boot JDK -> ${CI_PROJECT_DIR}/${BOOT_JDK_DIR}"
     # ── 4. Download and unpack jtreg (needed by configure --with-jtreg) ───────
-    - wget -q -O "${JTREG_ARCHIVE}" "${JTREG_URL}"
-    - tar -xzf "${JTREG_ARCHIVE}"
-    - echo "jtreg -> ${CI_PROJECT_DIR}/jtreg"
+    - wget --no-verbose -O "${JTREG_ARCHIVE}" "${JTREG_URL}"
+    - mkdir -p jtreg && tar -xzf "${JTREG_ARCHIVE}" --strip-components=1 -C jtreg
+    - echo "jtreg -> ${CI_PROJECT_DIR}/jtreg  ($(ls jtreg/bin/))"
 
   script:
     # ── Configure ─────────────────────────────────────────────────────────────
@@ -127,11 +127,11 @@ test_jtreg:
         libxtst6:armhf libxt6:armhf libcups2:armhf libfontconfig1:armhf \
         libasound2:armhf libfreetype6:armhf libpng16-16:armhf libstdc++6:armhf
     # ── 2. Download boot JDK again (needed to run jtreg itself on aarch64) ────
-    - wget -q -O "${BOOT_JDK_ARCHIVE}" "${BOOT_JDK_URL}"
+    - wget --no-verbose -O "${BOOT_JDK_ARCHIVE}" "${BOOT_JDK_URL}"
     - tar -xzf "${BOOT_JDK_ARCHIVE}"
-    # ── 3. Unpack jtreg (downloaded into artifacts by the build job) ──────────
-    - wget -q -O "${JTREG_ARCHIVE}" "${JTREG_URL}"
-    - tar -xzf "${JTREG_ARCHIVE}"
+    # ── 3. Download and unpack jtreg ─────────────────────────────────────────
+    - wget --no-verbose -O "${JTREG_ARCHIVE}" "${JTREG_URL}"
+    - mkdir -p jtreg && tar -xzf "${JTREG_ARCHIVE}" --strip-components=1 -C jtreg
 
   script:
     # Resolve the JDK image path produced by the build stage
