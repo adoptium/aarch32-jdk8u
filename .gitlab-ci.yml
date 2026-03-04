@@ -150,8 +150,7 @@ test_jtreg:
         echo "ERROR: j2sdk-image not found in build artifacts"; exit 1
       fi
       echo "Test JDK: ${TEST_JDK}"
-    # Confirm the ARM32 java binary is present and the kernel can execute it
-    - file "${TEST_JDK}/bin/java"
+    # Confirm the ARM32 JVM starts correctly on this aarch64 kernel
     - ${TEST_JDK}/bin/java -version
 
     # ── Run jdk_tier1 (java.lang / java.util / java.math / jdi) ──────────────
