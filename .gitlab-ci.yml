@@ -86,7 +86,14 @@ build_jdk:
 
   script:
     # ── Configure ─────────────────────────────────────────────────────────────
+    # CC/CXX must be exported explicitly; --openjdk-target alone does not
+    # override the autoconf compiler detection that runs before the target
+    # platform is fully processed.
     - |
+      CC=arm-linux-gnueabihf-gcc \
+      CXX=arm-linux-gnueabihf-g++ \
+      BUILD_CC=gcc \
+      BUILD_CXX=g++ \
       bash ./configure \
         --with-boot-jdk="${CI_PROJECT_DIR}/${BOOT_JDK_DIR}" \
         --openjdk-target=arm-linux-gnueabihf \
