@@ -120,6 +120,7 @@ build_and_test_jdk:
         -agentvm \
         -verbose:fail,error \
         -xml \
+        -timeout:0.25 \
         -report:"${CI_PROJECT_DIR}/jtreg-results/jdk" \
         -dir:"${CI_PROJECT_DIR}/jdk/test" \
         :jdk_tier1
@@ -132,6 +133,7 @@ build_and_test_jdk:
         -agentvm \
         -verbose:fail,error \
         -xml \
+        -timeout:0.25 \
         -report:"${CI_PROJECT_DIR}/jtreg-results/hotspot" \
         -dir:"${CI_PROJECT_DIR}/hotspot/test" \
         :hotspot_tier1
