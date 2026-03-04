@@ -127,21 +127,20 @@ build_and_test_jdk:
         -r:"${CI_PROJECT_DIR}/jtreg-results/jdk/JTreport" \
         -w:"${CI_PROJECT_DIR}/jtreg-results/jdk/JTwork" \
         -dir:"${CI_PROJECT_DIR}/jdk/test" \
-        java/util/concurrent/atomic/Serial.java || JDK_RC=$?
+        :jdk_tier1 || JDK_RC=$?
 
       # ── Run hotspot test (single case for quick CI validation) ───────────────
-      # HOTSPOT_RC=0
-      # "${CI_PROJECT_DIR}/jtreg/bin/jtreg" \
-      #   -jdk:"${TEST_JDK}" \
-      #   -agentvm \
-      #   -verbose:fail,error \
-      #   -xml \
-      #   -timeout:0.25 \
-      #   -r:"${CI_PROJECT_DIR}/jtreg-results/hotspot/JTreport" \
-      #   -w:"${CI_PROJECT_DIR}/jtreg-results/hotspot/JTwork" \
-      #   -dir:"${CI_PROJECT_DIR}/hotspot/test" \
-      #   :hotspot_tier1 || HOTSPOT_RC=$?
-      HOTSPOT_RC=0
+       HOTSPOT_RC=0
+       "${CI_PROJECT_DIR}/jtreg/bin/jtreg" \
+         -jdk:"${TEST_JDK}" \
+         -agentvm \
+         -verbose:fail,error \
+         -xml \
+         -timeout:0.25 \
+         -r:"${CI_PROJECT_DIR}/jtreg-results/hotspot/JTreport" \
+         -w:"${CI_PROJECT_DIR}/jtreg-results/hotspot/JTwork" \
+         -dir:"${CI_PROJECT_DIR}/hotspot/test" \
+         :hotspot_tier1 || HOTSPOT_RC=$?
 
       # ── Print combined summary ────────────────────────────────────────────────
       echo "=== Test Summary ==="
@@ -161,7 +160,6 @@ build_and_test_jdk:
     name: "jdk8-aarch32-${CI_COMMIT_SHORT_SHA}"
     when: always
     paths:
-      - build/*/images/
       - jtreg-results/
     reports:
       junit:
