@@ -133,6 +133,73 @@ build_and_test_jdk:
         compiler/7179138/Test7179138_1.java || HOTSPOT_RC=$?
       HOTSPOT_RC=${HOTSPOT_RC:-0}
 
+      # ── Convert jtreg JTR XML → JUnit XML for GitLab test report ────────────
+      # jtreg 5.1 writes per-test .jtr files (XML when -xml is passed) into
+      # JTwork/.  GitLab needs a single junit.xml per suite in JTreport/.
+      python3 - <<'PYEOF'
+import glob, os
+import xml.etree.ElementTree as ET
+
+def convert(jtwk_dir, junit_out):
+    jtr_files = sorted(glob.glob(os.path.join(jtwk_dir, '**/*.jtr'), recursive=True))
+    tests = failures = errors = 0
+    cases = []
+    for jtr_file in jtr_files:
+        try:
+            root = ET.parse(jtr_file).getroot()
+        except ET.ParseError:
+            continue
+        test_id   = root.get('id', jtr_file)
+        status_str = root.get('status', '')
+        sl = status_str.lower()
+        if sl.startswith('passed'):
+            status = 'passed'
+        elif sl.startswith('failed'):
+            status = 'failed'
+            failures += 1
+        else:
+            status = 'error'
+            errors += 1
+        tests += 1
+        elapsed = '0'
+        props = root.find('properties')
+        if props is not None:
+            for p in props.findall('property'):
+                if p.get('name') == 'elapsed':
+                    try:
+                        elapsed = str(int(p.get('value', '0')) / 1000.0)
+                    except ValueError:
+                        pass
+        parts = test_id.replace('.java', '').split('/')
+        classname = '.'.join(parts[:-1]) if len(parts) > 1 else 'jtreg'
+        name      = parts[-1]            if len(parts) > 1 else test_id
+        msg = (status_str.replace('&', '&amp;')
+                         .replace('"', '&quot;')
+                         .replace('<', '&lt;'))
+        cases.append((classname, name, elapsed, status, msg))
+    os.makedirs(os.path.dirname(junit_out), exist_ok=True)
+    with open(junit_out, 'w') as f:
+        f.write('<?xml version="1.0" encoding="UTF-8"?>\n')
+        f.write(f'<testsuite name="jtreg" tests="{tests}" '
+                f'failures="{failures}" errors="{errors}">\n')
+        for classname, name, elapsed, status, msg in cases:
+            f.write(f'  <testcase classname="{classname}" name="{name}" '
+                    f'time="{elapsed}">\n')
+            if status == 'failed':
+                f.write(f'    <failure message="{msg}"/>\n')
+            elif status == 'error':
+                f.write(f'    <error message="{msg}"/>\n')
+            f.write('  </testcase>\n')
+        f.write('</testsuite>\n')
+    print(f"junit: {tests} tests ({failures} failures, {errors} errors) → {junit_out}")
+
+base = os.environ['CI_PROJECT_DIR'] + '/jtreg-results'
+for suite in ('jdk', 'hotspot'):
+    jtwk = f"{base}/{suite}/JTwork"
+    if os.path.isdir(jtwk):
+        convert(jtwk, f"{base}/{suite}/JTreport/junit.xml")
+PYEOF
+
       # ── Print combined summary ────────────────────────────────────────────────
       echo "=== Test Summary ==="
       for summary in "${CI_PROJECT_DIR}/jtreg-results"/*/JTreport/text/summary.txt; do
