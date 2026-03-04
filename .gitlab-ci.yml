@@ -118,7 +118,6 @@ build_and_test_jdk:
       "${CI_PROJECT_DIR}/jtreg/bin/jtreg" \
         -jdk:"${TEST_JDK}" \
         -agentvm \
-        -timeout:120 \
         -verbose:fail,error \
         -xml \
         -report:"${CI_PROJECT_DIR}/jtreg-results/jdk" \
@@ -131,7 +130,6 @@ build_and_test_jdk:
       "${CI_PROJECT_DIR}/jtreg/bin/jtreg" \
         -jdk:"${TEST_JDK}" \
         -agentvm \
-        -timeout:120 \
         -verbose:fail,error \
         -xml \
         -report:"${CI_PROJECT_DIR}/jtreg-results/hotspot" \
