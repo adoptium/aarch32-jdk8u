@@ -1,0 +1,68 @@
+# AArch32 port known failures
+# Source: pipeline 11536890 (2026-03-04)
+# Bug ID 0000000 is a placeholder — replace with real tracker reference.
+
+# JDI tests — agent communication failures (Broken pipe / timeout) on aarch32
+com/sun/jdi/ClassesByName.java					0000000	generic-all
+com/sun/jdi/ClassesByName2Test.java				0000000	generic-all
+com/sun/jdi/EventQueueDisconnectTest.java			0000000	generic-all
+com/sun/jdi/ExclusiveBind.java					0000000	generic-all
+com/sun/jdi/JITDebug.sh						0000000	generic-all
+com/sun/jdi/LambdaBreakpointTest.java				0000000	generic-all
+com/sun/jdi/MethodEntryExitEvents.java				0000000	generic-all
+com/sun/jdi/RedefineCrossEvent.java				0000000	generic-all
+com/sun/jdi/RedefineCrossStart.java				0000000	generic-all
+com/sun/jdi/ReferrersTest.java					0000000	generic-all
+
+# LFCaching tests — failures on aarch32
+java/lang/invoke/LFCaching/LFGarbageCollectedTest.java		0000000	generic-all
+java/lang/invoke/LFCaching/LFMultiThreadCachingTest.java	0000000	generic-all
+
+# StringBuilder / math failures on aarch32
+java/lang/StringBuilder/HugeCapacity.java			0000000	generic-all
+java/math/BigInteger/BigIntegerTest.java			0000000	generic-all
+java/math/BigInteger/CompareToTests.java			0000000	generic-all
+
+# Concurrent / BlockingQueue tests — timeout / broken pipe on aarch32
+java/util/concurrent/BlockingQueue/CancelledProducerConsumerLoops.java	0000000	generic-all
+java/util/concurrent/BlockingQueue/Interrupt.java		0000000	generic-all
+java/util/concurrent/BlockingQueue/MultipleProducersSingleConsumerLoops.java	0000000	generic-all
+java/util/concurrent/BlockingQueue/OfferDrainToLoops.java	0000000	generic-all
+java/util/concurrent/forkjoin/FJExceptionTableLeak.java		0000000	generic-all
+java/util/concurrent/forkjoin/Integrate.java			0000000	generic-all
+java/util/concurrent/locks/StampedLock/Basic.java		0000000	generic-all
+java/util/concurrent/locks/StampedLock/ReadersUnlockAfterWriteUnlock.java	0000000	generic-all
+
+# Logging deadlock tests — timeout on aarch32
+java/util/logging/DrainFindDeadlockTest.java			0000000	generic-all
+java/util/logging/TestLogConfigurationDeadLockWithConf.java	0000000	generic-all
+
+# Stream tests — failures / timeouts on aarch32
+java/util/stream/boottest/java/util/stream/DoubleNodeTest.java	0000000	generic-all
+java/util/stream/boottest/java/util/stream/FlagOpTest.java	0000000	generic-all
+java/util/stream/boottest/java/util/stream/IntNodeTest.java	0000000	generic-all
+java/util/stream/boottest/java/util/stream/LongNodeTest.java	0000000	generic-all
+java/util/stream/boottest/java/util/stream/NodeTest.java	0000000	generic-all
+java/util/stream/boottest/java/util/stream/SpinedBufferTest.java	0000000	generic-all
+java/util/stream/test/org/openjdk/tests/java/util/stream/ConcatOpTest.java	0000000	generic-all
+java/util/stream/test/org/openjdk/tests/java/util/stream/CountLargeTest.java	0000000	generic-all
+java/util/stream/test/org/openjdk/tests/java/util/stream/DistinctOpTest.java	0000000	generic-all
+java/util/stream/test/org/openjdk/tests/java/util/stream/FilterOpTest.java	0000000	generic-all
+java/util/stream/test/org/openjdk/tests/java/util/stream/FlatMapOpTest.java	0000000	generic-all
+java/util/stream/test/org/openjdk/tests/java/util/stream/InfiniteStreamWithLimitOpTest.java	0000000	generic-all
+java/util/stream/test/org/openjdk/tests/java/util/stream/IntSliceOpTest.java	0000000	generic-all
+java/util/stream/test/org/openjdk/tests/java/util/stream/IntUniqOpTest.java	0000000	generic-all
+java/util/stream/test/org/openjdk/tests/java/util/stream/MapOpTest.java	0000000	generic-all
+java/util/stream/test/org/openjdk/tests/java/util/stream/SequentialOpTest.java	0000000	generic-all
+java/util/stream/test/org/openjdk/tests/java/util/stream/SliceOpTest.java	0000000	generic-all
+java/util/stream/test/org/openjdk/tests/java/util/stream/SortedOpTest.java	0000000	generic-all
+java/util/stream/test/org/openjdk/tests/java/util/stream/StreamBuilderTest.java	0000000	generic-all
+java/util/stream/test/org/openjdk/tests/java/util/stream/StreamLinkTest.java	0000000	generic-all
+java/util/stream/test/org/openjdk/tests/java/util/stream/StreamSpliteratorTest.java	0000000	generic-all
+java/util/stream/test/org/openjdk/tests/java/util/stream/TabulatorsTest.java	0000000	generic-all
+java/util/stream/test/org/openjdk/tests/java/util/stream/TeeOpTest.java	0000000	generic-all
+java/util/stream/TestDoubleSumAverage.java			0000000	generic-all
+
+# Other util failures on aarch32
+java/util/StringJoiner/MergeTest.java				0000000	generic-all
+java/util/TimeZone/DefaultTimeZoneTest.java			0000000	generic-all

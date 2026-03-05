@@ -1,0 +1,68 @@
+# AArch32 port known failures
+# Source: pipeline 11536890 (2026-03-04)
+# Bug ID 0000000 is a placeholder — replace with real tracker reference.
+
+# Compiler tests — failures / timeouts on aarch32
+compiler/6912517/Test.java				0000000	generic-all
+compiler/6916644/Test6916644.java			0000000	generic-all
+compiler/7100757/Test7100757.java			0000000	generic-all
+compiler/rangechecks/RangeCheckEliminationScaleNotOne.java	0000000	generic-all
+compiler/tiered/Level2RecompilationTest.java		0000000	generic-all
+
+# GC tests — failures on aarch32
+gc/6581734/Test6581734.java				0000000	generic-all
+gc/7072527/TestFullGCCount.java				0000000	generic-all
+gc/TestMemoryMXBeansAndPoolsPresence.java		0000000	generic-all
+gc/class_unloading/TestG1ClassUnloadingHWM.java		0000000	generic-all
+gc/ergonomics/TestDynamicNumberOfGCThreads.java		0000000	generic-all
+gc/g1/Test2GbHeap.java					0000000	generic-all
+gc/g1/TestEagerReclaimHumongousRegions.java		0000000	generic-all
+gc/g1/TestEagerReclaimHumongousRegionsWithRefs.java	0000000	generic-all
+gc/g1/TestG1TraceEagerReclaimHumongousObjects.java	0000000	generic-all
+gc/g1/TestGCLogMessages.java				0000000	generic-all
+gc/g1/TestGreyReclaimedHumongousObjects.java		0000000	generic-all
+gc/g1/TestHumongousAllocInitialMark.java		0000000	generic-all
+gc/g1/TestHumongousShrinkHeap.java			0000000	generic-all
+gc/g1/TestNoEagerReclaimOfHumongousRegions.java		0000000	generic-all
+gc/g1/TestPrintRegionRememberedSetInfo.java		0000000	generic-all
+gc/g1/TestShrinkAuxiliaryData00.java			0000000	generic-all
+gc/g1/TestShrinkDefragmentedHeap.java			0000000	generic-all
+gc/g1/TestStringDeduplicationAgeThreshold.java		0000000	generic-all
+gc/g1/TestStringDeduplicationFullGC.java		0000000	generic-all
+gc/g1/TestStringDeduplicationInterned.java		0000000	generic-all
+gc/g1/TestStringDeduplicationPrintOptions.java		0000000	generic-all
+gc/g1/TestStringDeduplicationTableRehash.java		0000000	generic-all
+gc/g1/TestStringDeduplicationTableResize.java		0000000	generic-all
+gc/g1/TestStringDeduplicationYoungGC.java		0000000	generic-all
+gc/g1/TestStringSymbolTableStats.java			0000000	generic-all
+
+# Runtime tests — failures on aarch32
+runtime/6929067/Test6929067.sh				0000000	generic-all
+runtime/Metaspace/FragmentMetaspace.java		0000000	generic-all
+runtime/Metaspace/FragmentMetaspaceSimple.java		0000000	generic-all
+runtime/NMT/AutoshutdownNMT.java			0000000	generic-all
+runtime/NMT/BaselineWithParameter.java			0000000	generic-all
+runtime/NMT/ChangeTrackingLevel.java			0000000	generic-all
+runtime/NMT/CommandLineDetail.java			0000000	generic-all
+runtime/NMT/JcmdBaselineDetail.java			0000000	generic-all
+runtime/NMT/JcmdDetailDiff.java				0000000	generic-all
+runtime/NMT/JcmdScaleDetail.java			0000000	generic-all
+runtime/NMT/MallocRoundingReportTest.java		0000000	generic-all
+runtime/NMT/MallocSiteHashOverflow.java			0000000	generic-all
+runtime/NMT/MallocSiteTypeChange.java			0000000	generic-all
+runtime/NMT/MallocStressTest.java			0000000	generic-all
+runtime/NMT/MallocTestType.java				0000000	generic-all
+runtime/NMT/MallocTrackingVerify.java			0000000	generic-all
+runtime/NMT/NMTWithCDS.java				0000000	generic-all
+runtime/NMT/PrintNMTStatistics.java			0000000	generic-all
+runtime/NMT/ReleaseCommittedMemory.java			0000000	generic-all
+runtime/NMT/ShutdownTwice.java				0000000	generic-all
+runtime/NMT/SummaryAfterShutdown.java			0000000	generic-all
+runtime/NMT/ThreadedMallocTestType.java			0000000	generic-all
+runtime/NMT/ThreadedVirtualAllocTestType.java		0000000	generic-all
+runtime/NMT/VirtualAllocCommitUncommitRecommit.java	0000000	generic-all
+runtime/NMT/VirtualAllocTestType.java			0000000	generic-all
+runtime/jsig/Test8017498.sh				0000000	generic-all
+
+# Serviceability tests — failures on aarch32
+serviceability/sa/jmap-hashcode/Test8028623.java	0000000	generic-all
