@@ -14,8 +14,8 @@ workflow:
     - if: $CI_COMMIT_BRANCH
 
 stages:
-  - build_and_test
   - sync
+  - build_and_test
 
 # ── Shared variables ────────────────────────────────────────────────────────
 
@@ -187,7 +187,6 @@ build_and_test_jdk:
 sync_upstream_tags:
   image: debian:12-slim
   stage: sync
-  needs: []  # run independently – don't wait for build_and_test stage
   tags:
     - linux
     - k8s
