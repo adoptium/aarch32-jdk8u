@@ -73,7 +73,9 @@ java/util/StringTokenizer/FormFeed.java				0000000	generic-all
 java/util/StringTokenizer/ResetPos.java				0000000	generic-all
 java/util/StringTokenizer/Supplementary.java			0000000	generic-all
 java/util/TimeZone/AssureTzdataVersion.java			0000000	generic-all
+java/util/TimeZone/Bug4322313.java				0000000	generic-all
 java/util/TimeZone/DefaultTimeZoneTest.java			0000000	generic-all
+java/util/TimeZone/bug4096952.java				0000000	generic-all
 java/util/stream/test/org/openjdk/tests/java/util/SplittableRandomTest.java	0000000	generic-all
 java/util/stream/test/org/openjdk/tests/java/util/stream/CollectAndSummaryStatisticsTest.java	0000000	generic-all
 java/util/stream/test/org/openjdk/tests/java/util/stream/ForEachOpTest.java	0000000	generic-all
