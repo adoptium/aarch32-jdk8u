@@ -64,6 +64,7 @@ java/util/Timer/Args.java					0000000	generic-all
 java/util/Timer/DelayOverflow.java				0000000	generic-all
 java/util/Timer/KillThread.java					0000000	generic-all
 java/util/Timer/NameConstructors.java				0000000	generic-all
+java/util/Timer/Purge.java					0000000	generic-all
 
 # Other util failures on aarch32
 java/util/StringJoiner/MergeTest.java				0000000	generic-all
@@ -71,6 +72,7 @@ java/util/StringJoiner/StringJoinerTest.java			0000000	generic-all
 java/util/StringTokenizer/FormFeed.java				0000000	generic-all
 java/util/StringTokenizer/ResetPos.java				0000000	generic-all
 java/util/StringTokenizer/Supplementary.java			0000000	generic-all
+java/util/TimeZone/AssureTzdataVersion.java			0000000	generic-all
 java/util/TimeZone/DefaultTimeZoneTest.java			0000000	generic-all
 java/util/stream/test/org/openjdk/tests/java/util/SplittableRandomTest.java	0000000	generic-all
 java/util/stream/test/org/openjdk/tests/java/util/stream/CollectAndSummaryStatisticsTest.java	0000000	generic-all
