@@ -11,11 +11,14 @@ workflow:
   rules:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
     - if: $CI_PIPELINE_SOURCE == "schedule"
+    - if: $CI_PIPELINE_SOURCE == "web"
+    # Suppress redundant branch pipeline when an MR is already open for the branch
+    - if: $CI_COMMIT_BRANCH && $CI_OPEN_MERGE_REQUESTS
+      when: never
     - if: $CI_COMMIT_BRANCH
 
 stages:
-  - build_and_test
-  - sync
+  - ci
 
 # ── Shared variables ────────────────────────────────────────────────────────
 
@@ -46,12 +49,12 @@ build_and_test_jdk:
     - 16x32
     - dind
     - zulu
-  stage: build_and_test
+  stage: ci
   rules:
-    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-    - if: $CI_COMMIT_BRANCH
     - if: $CI_PIPELINE_SOURCE == "web"
       when: manual
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_COMMIT_BRANCH
     - when: never
 
   before_script:
@@ -192,7 +195,7 @@ build_and_test_jdk:
 
 sync_upstream_tags:
   image: debian:12-slim
-  stage: sync
+  stage: ci
   tags:
     - linux
     - k8s
