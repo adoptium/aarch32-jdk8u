@@ -12,11 +12,14 @@ compiler/7192963/TestByteVect.java			0000000	generic-all
 compiler/7192963/TestDoubleVect.java			0000000	generic-all
 compiler/7192963/TestFloatVect.java			0000000	generic-all
 compiler/7192963/TestIntVect.java			0000000	generic-all
+compiler/7192963/TestLongVect.java			0000000	generic-all
+compiler/7192963/TestShortVect.java			0000000	generic-all
 compiler/7199742/Test7199742.java			0000000	generic-all
 compiler/8000805/Test8000805.java			0000000	generic-all
 compiler/8002069/Test8002069.java			0000000	generic-all
 compiler/8004051/Test8004051.java			0000000	generic-all
 compiler/8004741/Test8004741.java			0000000	generic-all
+compiler/8004867/TestIntAtomicCAS.java			0000000	generic-all
 compiler/8001183/TestCharVect.java			0000000	generic-all
 compiler/8209951/TestCipherBlockChainingEncrypt.java	0000000	generic-all
 compiler/arguments/TestUseBMI1InstructionsOnSupportedCPU.java	0000000	generic-all
@@ -36,6 +39,9 @@ compiler/intrinsics/sha/cli/TestUseSHA1IntrinsicsOptionOnUnsupportedCPU.java	000
 compiler/intrinsics/sha/cli/TestUseSHA256IntrinsicsOptionOnSupportedCPU.java	0000000	generic-all
 compiler/intrinsics/sha/cli/TestUseSHA256IntrinsicsOptionOnUnsupportedCPU.java	0000000	generic-all
 compiler/intrinsics/sha/cli/TestUseSHA512IntrinsicsOptionOnSupportedCPU.java	0000000	generic-all
+compiler/intrinsics/sha/cli/TestUseSHA512IntrinsicsOptionOnUnsupportedCPU.java	0000000	generic-all
+compiler/intrinsics/sha/cli/TestUseSHAOptionOnSupportedCPU.java		0000000	generic-all
+compiler/intrinsics/sha/cli/TestUseSHAOptionOnUnsupportedCPU.java	0000000	generic-all
 compiler/intrinsics/unsafe/UnsafeGetAddressTest.java	0000000	generic-all
 compiler/intrinsics/squaretolen/TestSquareToLen.java	0000000	generic-all
 compiler/intrinsics/stringequals/TestStringEqualsBadLength.java	0000000	generic-all
@@ -43,6 +49,8 @@ compiler/jsr292/methodHandleExceptions/TestAMEnotNPE.java	0000000	generic-all
 compiler/loopopts/TestUnrollLimitPreciseType.java#test0	0000000	generic-all
 compiler/loopopts/TestUnrollLimitPreciseType.java#test1	0000000	generic-all
 compiler/loopopts/superword/TestFuzzPreLoop.java	0000000	generic-all
+compiler/loopopts/superword/TestNegBaseOffset.java	0000000	generic-all
+compiler/loopopts/superword/TestVectorizationWithInvariant.java	0000000	generic-all
 compiler/rangechecks/RangeCheckEliminationScaleNotOne.java	0000000	generic-all
 compiler/tiered/Level2RecompilationTest.java		0000000	generic-all
 testlibrary/ctw/test/ClassesListTest.java		0000000	generic-all

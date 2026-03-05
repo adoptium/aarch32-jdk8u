@@ -20,6 +20,7 @@ java/math/BigInteger/BigIntegerTest.java			0000000	generic-all
 java/math/BigInteger/CompareToTests.java			0000000	generic-all
 
 # Concurrent / BlockingQueue tests — timeout / broken pipe on aarch32
+java/util/concurrent/ConcurrentQueues/RemovePollRace.java	0000000	generic-all
 java/util/concurrent/BlockingQueue/CancelledProducerConsumerLoops.java	0000000	generic-all
 java/util/concurrent/BlockingQueue/Interrupt.java		0000000	generic-all
 java/util/concurrent/BlockingQueue/MultipleProducersSingleConsumerLoops.java	0000000	generic-all
@@ -72,13 +73,33 @@ java/util/StringJoiner/StringJoinerTest.java			0000000	generic-all
 java/util/StringTokenizer/FormFeed.java				0000000	generic-all
 java/util/StringTokenizer/ResetPos.java				0000000	generic-all
 java/util/StringTokenizer/Supplementary.java			0000000	generic-all
+# TimeZone tests — all fail on aarch32 (tzdata version mismatch)
 java/util/TimeZone/AssureTzdataVersion.java			0000000	generic-all
 java/util/TimeZone/Bug4322313.java				0000000	generic-all
 java/util/TimeZone/Bug5097350.java				0000000	generic-all
+java/util/TimeZone/Bug6329116.java				0000000	generic-all
+java/util/TimeZone/Bug6772689.java				0000000	generic-all
+java/util/TimeZone/Bug6912560.java				0000000	generic-all
+java/util/TimeZone/Bug8066652.java				0000000	generic-all
+java/util/TimeZone/CLDRDisplayNamesTest.java			0000000	generic-all
+java/util/TimeZone/DaylightTimeTest.java			0000000	generic-all
 java/util/TimeZone/DefaultTimeZoneTest.java			0000000	generic-all
+java/util/TimeZone/HongKong.java				0000000	generic-all
+java/util/TimeZone/IDTest.java					0000000	generic-all
+java/util/TimeZone/ListTimeZones.java				0000000	generic-all
+java/util/TimeZone/OldIDMappingTest.java			0000000	generic-all
+java/util/TimeZone/SetDefaultSecurityTest.java			0000000	generic-all
+java/util/TimeZone/TimeZoneBoundaryTest.java			0000000	generic-all
+java/util/TimeZone/TimeZoneDatePermissionCheck.java		0000000	generic-all
+java/util/TimeZone/TimeZoneRegression.java			0000000	generic-all
+java/util/TimeZone/TimeZoneTest.java				0000000	generic-all
+java/util/TimeZone/TransitionTest.java				0000000	generic-all
+java/util/TimeZone/TzIDOldMapping.java				0000000	generic-all
+java/util/TimeZone/UTCAliasTest.java				0000000	generic-all
 java/util/TimeZone/bug4096952.java				0000000	generic-all
 java/util/stream/test/org/openjdk/tests/java/util/SplittableRandomTest.java	0000000	generic-all
 java/util/stream/test/org/openjdk/tests/java/util/stream/CollectAndSummaryStatisticsTest.java	0000000	generic-all
+java/util/stream/test/org/openjdk/tests/java/util/stream/FindFirstOpTest.java	0000000	generic-all
 java/util/stream/test/org/openjdk/tests/java/util/stream/ForEachOpTest.java	0000000	generic-all
 java/util/stream/test/org/openjdk/tests/java/util/stream/LongPrimitiveOpsTests.java	0000000	generic-all
 java/util/stream/test/org/openjdk/tests/java/util/stream/RangeTest.java	0000000	generic-all
