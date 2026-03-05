@@ -255,8 +255,6 @@ sync_upstream_tags:
       done <<< "${NEW_TAGS}"
 
       # ── Push the sync branch ──────────────────────────────────────────────
-      git remote set-url origin \
-        "https://oauth2:${GITLAB_API_TOKEN}@${CI_SERVER_HOST}/${CI_PROJECT_PATH}.git"
       git push origin "${SYNC_BRANCH}"
 
       # ── Compose MR title and description ──────────────────────────────────
