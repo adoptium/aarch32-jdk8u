@@ -2,38 +2,9 @@
 # Source: pipeline 11536890 (2026-03-04)
 # Bug ID 0000000 is a placeholder — replace with real tracker reference.
 
-# JDI tests — agent communication failures (Broken pipe / timeout) on aarch32
-com/sun/jdi/ClassesByName.java					0000000	generic-all
-com/sun/jdi/ClassesByName2Test.java				0000000	generic-all
-com/sun/jdi/ClassLoaderClassesTest.java				0000000	generic-all
-com/sun/jdi/CompatibleConnectors.java				0000000	generic-all
-com/sun/jdi/ConnectedVMs.java					0000000	generic-all
-com/sun/jdi/ConstantPoolInfo.java				0000000	generic-all
-com/sun/jdi/EventQueueDisconnectTest.java			0000000	generic-all
-com/sun/jdi/ExceptionEvents.java				0000000	generic-all
-com/sun/jdi/ExclusiveBind.java					0000000	generic-all
-com/sun/jdi/ExpiredRequestDeletionTest.java			0000000	generic-all
-com/sun/jdi/FieldWatchpoints.java				0000000	generic-all
-com/sun/jdi/JITDebug.sh						0000000	generic-all
-com/sun/jdi/LambdaBreakpointTest.java				0000000	generic-all
-com/sun/jdi/LambdaStepTest.java					0000000	generic-all
-com/sun/jdi/LaunchCommandLine.java				0000000	generic-all
-com/sun/jdi/LineNumberInfo.java					0000000	generic-all
-com/sun/jdi/ListenAddress.java					0000000	generic-all
-com/sun/jdi/MethodEntryExitEvents.java				0000000	generic-all
-com/sun/jdi/RedefineCrossEvent.java				0000000	generic-all
-com/sun/jdi/RedefineCrossStart.java				0000000	generic-all
-com/sun/jdi/ReferrersTest.java					0000000	generic-all
-com/sun/jdi/RepStep.java					0000000	generic-all
-com/sun/jdi/RequestReflectionTest.java				0000000	generic-all
-com/sun/jdi/CountEvent.java					0000000	generic-all
-com/sun/jdi/CountFilterTest.java				0000000	generic-all
-com/sun/jdi/FilterMatch.java					0000000	generic-all
-com/sun/jdi/LocalVariableEqual.java				0000000	generic-all
-com/sun/jdi/LocationTest.java					0000000	generic-all
-com/sun/jdi/ResumeOneThreadTest.java				0000000	generic-all
-com/sun/jdi/RunToExit.java					0000000	generic-all
-com/sun/jdi/SDENullTest.java					0000000	generic-all
+# JDI tests (com/sun/jdi) — the entire jdk_jdi group is NOT run on aarch32.
+# JDWP agent communication (Broken pipe / timeout) fails consistently on arm32.
+# The CI pipeline runs :jdk_lang :jdk_util :jdk_math instead of :jdk_tier1.
 
 # MethodHandles / invoke failures on aarch32
 java/lang/invoke/MethodHandles/CatchExceptionTest.java		0000000	generic-all
@@ -91,6 +62,8 @@ java/util/stream/TestDoubleSumAverage.java			0000000	generic-all
 # Timer failures on aarch32
 java/util/Timer/Args.java					0000000	generic-all
 java/util/Timer/DelayOverflow.java				0000000	generic-all
+java/util/Timer/KillThread.java					0000000	generic-all
+java/util/Timer/NameConstructors.java				0000000	generic-all
 
 # Other util failures on aarch32
 java/util/StringJoiner/MergeTest.java				0000000	generic-all

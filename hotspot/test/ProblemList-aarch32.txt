@@ -9,8 +9,10 @@ compiler/7100757/Test7100757.java			0000000	generic-all
 compiler/7190310/Test7190310.java			0000000	generic-all
 compiler/7190310/Test7190310_unsafe.java		0000000	generic-all
 compiler/7192963/TestByteVect.java			0000000	generic-all
+compiler/7192963/TestDoubleVect.java			0000000	generic-all
 compiler/7199742/Test7199742.java			0000000	generic-all
 compiler/8000805/Test8000805.java			0000000	generic-all
+compiler/8002069/Test8002069.java			0000000	generic-all
 compiler/8001183/TestCharVect.java			0000000	generic-all
 compiler/8209951/TestCipherBlockChainingEncrypt.java	0000000	generic-all
 compiler/arguments/TestUseBMI1InstructionsOnSupportedCPU.java	0000000	generic-all
@@ -27,6 +29,8 @@ compiler/escapeAnalysis/TestGetClass.java		0000000	generic-all
 compiler/gcbarriers/PreserveFPRegistersTest.java	0000000	generic-all
 compiler/intrinsics/sha/cli/TestUseSHA1IntrinsicsOptionOnSupportedCPU.java	0000000	generic-all
 compiler/intrinsics/sha/cli/TestUseSHA1IntrinsicsOptionOnUnsupportedCPU.java	0000000	generic-all
+compiler/intrinsics/sha/cli/TestUseSHA256IntrinsicsOptionOnSupportedCPU.java	0000000	generic-all
+compiler/intrinsics/unsafe/UnsafeGetAddressTest.java	0000000	generic-all
 compiler/intrinsics/squaretolen/TestSquareToLen.java	0000000	generic-all
 compiler/intrinsics/stringequals/TestStringEqualsBadLength.java	0000000	generic-all
 compiler/loopopts/TestUnrollLimitPreciseType.java#test0	0000000	generic-all
