@@ -14,8 +14,8 @@ workflow:
     - if: $CI_COMMIT_BRANCH
 
 stages:
-  - sync
   - build_and_test
+  - sync
 
 # ── Shared variables ────────────────────────────────────────────────────────
 
@@ -47,6 +47,11 @@ build_and_test_jdk:
     - dind
     - zulu
   stage: build_and_test
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "schedule"
+      when: never
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_COMMIT_BRANCH
 
   before_script:
     - hostname -I
@@ -195,7 +200,11 @@ sync_upstream_tags:
     - zulu
   rules:
     - if: $CI_PIPELINE_SOURCE == "schedule"
-    - when: manual  # allows triggering from any pipeline for testing
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+      when: never
+    - if: $CI_COMMIT_BRANCH
+      when: never
+    - when: manual
   variables:
     UPSTREAM_URL: "https://github.com/openjdk/jdk8u.git"
     SYNC_BASE_BRANCH: "master"
