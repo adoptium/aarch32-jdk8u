@@ -9,12 +9,13 @@
 
 workflow:
   rules:
-    # Run on every push to any branch and on merge-request pipelines
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_PIPELINE_SOURCE == "schedule"
     - if: $CI_COMMIT_BRANCH
 
 stages:
   - build_and_test
+  - sync
 
 # ── Shared variables ────────────────────────────────────────────────────────
 
@@ -124,6 +125,7 @@ build_and_test_jdk:
         -verbose:fail,error \
         -xml \
         -timeout:0.25 \
+        -exclude:"${CI_PROJECT_DIR}/jdk/test/ProblemList.txt" \
         -r:"${CI_PROJECT_DIR}/jtreg-results/jdk/JTreport" \
         -w:"${CI_PROJECT_DIR}/jtreg-results/jdk/JTwork" \
         -dir:"${CI_PROJECT_DIR}/jdk/test" \
@@ -137,6 +139,7 @@ build_and_test_jdk:
          -verbose:fail,error \
          -xml \
          -timeout:0.25 \
+         -exclude:"${CI_PROJECT_DIR}/hotspot/test/ProblemList.txt" \
          -r:"${CI_PROJECT_DIR}/jtreg-results/hotspot/JTreport" \
          -w:"${CI_PROJECT_DIR}/jtreg-results/hotspot/JTwork" \
          -dir:"${CI_PROJECT_DIR}/hotspot/test" \
@@ -168,3 +171,126 @@ build_and_test_jdk:
         # pipeline Tests tab — no intermediate aggregation script needed.
         - jtreg-results/**/*.jtr.xml
     expire_in: 1 week
+
+# ── Upstream sync (scheduled) ─────────────────────────────────────────────────
+#
+# Periodically checks https://github.com/openjdk/aarch32-port-jdk8u for new
+# tags and, when found, opens a GitLab MR that merges each new tag in version
+# order onto master.
+#
+# Prerequisites:
+#   • Create a GitLab scheduled pipeline (CI/CD → Schedules) targeting the
+#     gitlab-ci branch.  Any interval (e.g. daily) works.
+#   • Set the CI/CD variable  GITLAB_API_TOKEN  to a project or personal access
+#     token with `api` scope and at least Developer role on this project.
+
+sync_upstream_tags:
+  image: debian:12-slim
+  stage: sync
+  tags:
+    - linux
+    - k8s
+    - aarch64
+    - arm64
+    - zulu
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "schedule"
+  variables:
+    UPSTREAM_URL: "https://github.com/openjdk/aarch32-port-jdk8u.git"
+    SYNC_BASE_BRANCH: "master"
+    # Full clone so that all tags and history are available for merge-base checks
+    GIT_DEPTH: "0"
+
+  before_script:
+    - apt-get update -qq
+    - apt-get install -y --no-install-recommends git curl ca-certificates jq
+    - git config --global user.email "ci-sync-bot@azulsystems.com"
+    - git config --global user.name "CI Sync Bot"
+
+  script:
+    - |
+      set -euo pipefail
+
+      # ── Fetch upstream and ensure the base branch is current ──────────────
+      git remote add upstream "${UPSTREAM_URL}"
+      git fetch upstream --tags --no-recurse-submodules
+      git fetch origin "${SYNC_BASE_BRANCH}"
+
+      # ── Identify upstream tags not yet merged into the base branch ────────
+      # Using merge-base --is-ancestor is more accurate than comparing tag
+      # name lists: it catches tags that were merged without being mirrored
+      # locally, and skips tags whose commits are already reachable.
+      NEW_TAGS=""
+      while IFS= read -r TAG; do
+        [ -z "${TAG}" ] && continue
+        if ! git merge-base --is-ancestor "${TAG}" "origin/${SYNC_BASE_BRANCH}" 2>/dev/null; then
+          NEW_TAGS="${NEW_TAGS}${TAG}"$'\n'
+        fi
+      done < <(git ls-remote --tags upstream \
+                  | grep -v '\^{}' \
+                  | sed 's|.*refs/tags/||' \
+                  | sort -V)
+
+      # Remove trailing blank lines
+      NEW_TAGS=$(printf '%s' "${NEW_TAGS}" | sed '/^[[:space:]]*$/d')
+
+      if [ -z "${NEW_TAGS}" ]; then
+        echo "Already up to date – no unmerged upstream tags found."
+        exit 0
+      fi
+
+      echo "Upstream tags to merge (in version order):"
+      echo "${NEW_TAGS}"
+
+      # ── Create a sync branch from the base branch ─────────────────────────
+      SYNC_BRANCH="sync/upstream-$(date -u +%Y%m%d-%H%M%S)"
+      git checkout -b "${SYNC_BRANCH}" "origin/${SYNC_BASE_BRANCH}"
+
+      # ── Merge each new tag in version order ───────────────────────────────
+      # Fails immediately on merge conflict so a human can resolve it.
+      while IFS= read -r TAG; do
+        [ -z "${TAG}" ] && continue
+        echo "=== Merging ${TAG} ==="
+        git merge --no-ff -m "Merge upstream tag ${TAG}" "${TAG}"
+      done <<< "${NEW_TAGS}"
+
+      # ── Push the sync branch ──────────────────────────────────────────────
+      git remote set-url origin \
+        "https://oauth2:${GITLAB_API_TOKEN}@${CI_SERVER_HOST}/${CI_PROJECT_PATH}.git"
+      git push origin "${SYNC_BRANCH}"
+
+      # ── Compose MR title and description ──────────────────────────────────
+      TAG_COUNT=$(echo "${NEW_TAGS}" | wc -l | tr -d ' ')
+      FIRST_TAG=$(echo "${NEW_TAGS}" | head -1)
+      LAST_TAG=$(echo "${NEW_TAGS}"  | tail -1)
+      TAG_BULLETS=$(echo "${NEW_TAGS}" | sed 's/^/- /')
+
+      if [ "${TAG_COUNT}" -eq 1 ]; then
+        MR_TITLE="sync: merge upstream tag ${FIRST_TAG}"
+      else
+        MR_TITLE="sync: merge ${TAG_COUNT} upstream tags (${FIRST_TAG}..${LAST_TAG})"
+      fi
+
+      MR_DESC=$(printf \
+        "Automated upstream sync from \`%s\`.\n\n### Merged tags (%s)\n\n%s" \
+        "${UPSTREAM_URL}" "${TAG_COUNT}" "${TAG_BULLETS}")
+
+      # ── Open the MR via GitLab API ────────────────────────────────────────
+      curl --fail --silent --show-error \
+        --request POST \
+        --url "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/merge_requests" \
+        --header "PRIVATE-TOKEN: ${GITLAB_API_TOKEN}" \
+        --header "Content-Type: application/json" \
+        --data "$(jq -n \
+          --arg source "${SYNC_BRANCH}" \
+          --arg target "${SYNC_BASE_BRANCH}" \
+          --arg title  "${MR_TITLE}" \
+          --arg desc   "${MR_DESC}" \
+          '{source_branch:$source,
+            target_branch:$target,
+            title:$title,
+            description:$desc,
+            remove_source_branch:true}')"
+
+      echo ""
+      echo "MR opened: ${SYNC_BRANCH} → ${SYNC_BASE_BRANCH}"
