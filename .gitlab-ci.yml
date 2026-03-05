@@ -166,17 +166,18 @@ build_and_test_jdk:
 
       # jtreg exit codes:
       #   0 = all tests passed
-      #   1 = test failures/errors  (pre-existing aarch32 issues — do NOT fail CI)
-      #   2 = some tests had errors  (also pre-existing — do NOT fail CI)
+      #   1 = test failures/errors
+      #   2 = some tests had errors
       #  >=3 = jtreg setup / config error (bad -exclude file, missing JDK, etc.)
-      #        These indicate a broken pipeline and MUST fail CI.
+      # All known aarch32 failures are listed in ProblemList-aarch32.txt and
+      # excluded above, so any non-zero RC is unexpected and must fail CI.
       FINAL_RC=0
-      if [ "${JDK_RC}" -ge 3 ]; then
-        echo "ERROR: jdk_tier1 jtreg setup failed (RC=${JDK_RC})"
+      if [ "${JDK_RC}" -ne 0 ]; then
+        echo "ERROR: jdk_tier1 failed (RC=${JDK_RC})"
         FINAL_RC=1
       fi
-      if [ "${HOTSPOT_RC}" -ge 3 ]; then
-        echo "ERROR: hotspot_tier1 jtreg setup failed (RC=${HOTSPOT_RC})"
+      if [ "${HOTSPOT_RC}" -ne 0 ]; then
+        echo "ERROR: hotspot_tier1 failed (RC=${HOTSPOT_RC})"
         FINAL_RC=1
       fi
       exit ${FINAL_RC}
