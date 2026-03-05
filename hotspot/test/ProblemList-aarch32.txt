@@ -6,8 +6,10 @@
 compiler/6912517/Test.java				0000000	generic-all
 compiler/6916644/Test6916644.java			0000000	generic-all
 compiler/7100757/Test7100757.java			0000000	generic-all
+compiler/7190310/Test7190310.java			0000000	generic-all
 compiler/7190310/Test7190310_unsafe.java		0000000	generic-all
 compiler/7199742/Test7199742.java			0000000	generic-all
+compiler/8000805/Test8000805.java			0000000	generic-all
 compiler/8209951/TestCipherBlockChainingEncrypt.java	0000000	generic-all
 compiler/arguments/TestUseBMI1InstructionsOnSupportedCPU.java	0000000	generic-all
 compiler/c2/Test8202414.java				0000000	generic-all
@@ -21,8 +23,16 @@ compiler/codegen/TestCharVect2.java			0000000	generic-all
 compiler/criticalnatives/argumentcorruption/Test8167409.sh	0000000	generic-all
 compiler/escapeAnalysis/TestGetClass.java		0000000	generic-all
 compiler/gcbarriers/PreserveFPRegistersTest.java	0000000	generic-all
+compiler/intrinsics/sha/cli/TestUseSHA1IntrinsicsOptionOnSupportedCPU.java	0000000	generic-all
+compiler/intrinsics/squaretolen/TestSquareToLen.java	0000000	generic-all
+compiler/loopopts/TestUnrollLimitPreciseType.java	0000000	generic-all
 compiler/rangechecks/RangeCheckEliminationScaleNotOne.java	0000000	generic-all
 compiler/tiered/Level2RecompilationTest.java		0000000	generic-all
+
+# GC stress / whitebox failures on aarch32
+gc/g1/mixedgc/TestOldGenCollectionUsage.java		0000000	generic-all
+gc/stress/gclocker/TestExcessGCLockerCollections.java	0000000	generic-all
+gc/whitebox/TestConcMarkCycleWB.java			0000000	generic-all
 
 # GC tests — failures on aarch32
 gc/6581734/Test6581734.java				0000000	generic-all
@@ -53,6 +63,13 @@ gc/g1/TestStringSymbolTableStats.java			0000000	generic-all
 
 # Runtime tests — failures on aarch32
 runtime/6929067/Test6929067.sh				0000000	generic-all
+runtime/8003720/Test8003720.java			0000000	generic-all
+runtime/8007320/ConstMethodTest.java			0000000	generic-all
+runtime/CDSCompressedKPtrs/XShareAuto.java		0000000	generic-all
+runtime/InitialThreadOverflow/testme.sh			0000000	generic-all
+runtime/StackGap/testme.sh				0000000	generic-all
+runtime/jni/CallWithJNIWeak/test.sh			0000000	generic-all
+runtime/jni/ReturnJNIWeak/test.sh			0000000	generic-all
 runtime/Metaspace/FragmentMetaspace.java		0000000	generic-all
 runtime/Metaspace/FragmentMetaspaceSimple.java		0000000	generic-all
 runtime/NMT/AutoshutdownNMT.java			0000000	generic-all
@@ -80,4 +97,5 @@ runtime/NMT/VirtualAllocTestType.java			0000000	generic-all
 runtime/jsig/Test8017498.sh				0000000	generic-all
 
 # Serviceability tests — failures on aarch32
+serviceability/jvmti/DynamicCodeGenerated/DynamicCodeGeneratedTest.sh	0000000	generic-all
 serviceability/sa/jmap-hashcode/Test8028623.java	0000000	generic-all
