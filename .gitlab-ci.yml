@@ -125,7 +125,7 @@ build_and_test_jdk:
         -verbose:fail,error \
         -xml \
         -timeout:0.25 \
-        -exclude:"${CI_PROJECT_DIR}/jdk/test/ProblemList.txt" \
+        -exclude:"${CI_PROJECT_DIR}/jdk/test/ProblemList-aarch32.txt" \
         -r:"${CI_PROJECT_DIR}/jtreg-results/jdk/JTreport" \
         -w:"${CI_PROJECT_DIR}/jtreg-results/jdk/JTwork" \
         -dir:"${CI_PROJECT_DIR}/jdk/test" \
@@ -139,7 +139,7 @@ build_and_test_jdk:
          -verbose:fail,error \
          -xml \
          -timeout:0.25 \
-         -exclude:"${CI_PROJECT_DIR}/hotspot/test/ProblemList.txt" \
+         -exclude:"${CI_PROJECT_DIR}/hotspot/test/ProblemList-aarch32.txt" \
          -r:"${CI_PROJECT_DIR}/jtreg-results/hotspot/JTreport" \
          -w:"${CI_PROJECT_DIR}/jtreg-results/hotspot/JTwork" \
          -dir:"${CI_PROJECT_DIR}/hotspot/test" \
@@ -187,6 +187,7 @@ build_and_test_jdk:
 sync_upstream_tags:
   image: debian:12-slim
   stage: sync
+  needs: []  # run independently – don't wait for build_and_test stage
   tags:
     - linux
     - k8s
