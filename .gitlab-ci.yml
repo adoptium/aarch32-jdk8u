@@ -174,7 +174,7 @@ build_and_test_jdk:
 
 # ── Upstream sync (scheduled) ─────────────────────────────────────────────────
 #
-# Periodically checks https://github.com/openjdk/aarch32-port-jdk8u for new
+# Periodically checks https://github.com/openjdk/jdk8u for new
 # tags and, when found, opens a GitLab MR that merges each new tag in version
 # order onto master.
 #
@@ -198,7 +198,7 @@ sync_upstream_tags:
     - if: $CI_PIPELINE_SOURCE == "schedule"
     - when: manual  # allows triggering from any pipeline for testing
   variables:
-    UPSTREAM_URL: "https://github.com/openjdk/aarch32-port-jdk8u.git"
+    UPSTREAM_URL: "https://github.com/openjdk/jdk8u.git"
     SYNC_BASE_BRANCH: "master"
     # Set to "true" to skip git push and MR creation (safe for testing)
     SYNC_DRY_RUN: "false"
