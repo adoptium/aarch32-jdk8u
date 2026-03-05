@@ -26,7 +26,18 @@ com/sun/jdi/RedefineCrossStart.java				0000000	generic-all
 com/sun/jdi/ReferrersTest.java					0000000	generic-all
 com/sun/jdi/RepStep.java					0000000	generic-all
 com/sun/jdi/RequestReflectionTest.java				0000000	generic-all
+com/sun/jdi/CountEvent.java					0000000	generic-all
+com/sun/jdi/CountFilterTest.java				0000000	generic-all
+com/sun/jdi/FilterMatch.java					0000000	generic-all
+com/sun/jdi/LocalVariableEqual.java				0000000	generic-all
+com/sun/jdi/LocationTest.java					0000000	generic-all
 com/sun/jdi/ResumeOneThreadTest.java				0000000	generic-all
+com/sun/jdi/RunToExit.java					0000000	generic-all
+com/sun/jdi/SDENullTest.java					0000000	generic-all
+
+# MethodHandles / invoke failures on aarch32
+java/lang/invoke/MethodHandles/CatchExceptionTest.java		0000000	generic-all
+java/lang/invoke/MethodHandles/TestCatchException.java		0000000	generic-all
 
 # LFCaching tests — failures on aarch32
 java/lang/invoke/LFCaching/LFGarbageCollectedTest.java		0000000	generic-all
@@ -77,6 +88,10 @@ java/util/stream/test/org/openjdk/tests/java/util/stream/TabulatorsTest.java	000
 java/util/stream/test/org/openjdk/tests/java/util/stream/TeeOpTest.java	0000000	generic-all
 java/util/stream/TestDoubleSumAverage.java			0000000	generic-all
 
+# Timer failures on aarch32
+java/util/Timer/Args.java					0000000	generic-all
+java/util/Timer/DelayOverflow.java				0000000	generic-all
+
 # Other util failures on aarch32
 java/util/StringJoiner/MergeTest.java				0000000	generic-all
 java/util/StringJoiner/StringJoinerTest.java			0000000	generic-all
@@ -85,5 +100,7 @@ java/util/StringTokenizer/ResetPos.java				0000000	generic-all
 java/util/StringTokenizer/Supplementary.java			0000000	generic-all
 java/util/TimeZone/DefaultTimeZoneTest.java			0000000	generic-all
 java/util/stream/test/org/openjdk/tests/java/util/SplittableRandomTest.java	0000000	generic-all
+java/util/stream/test/org/openjdk/tests/java/util/stream/CollectAndSummaryStatisticsTest.java	0000000	generic-all
 java/util/stream/test/org/openjdk/tests/java/util/stream/ForEachOpTest.java	0000000	generic-all
+java/util/stream/test/org/openjdk/tests/java/util/stream/LongPrimitiveOpsTests.java	0000000	generic-all
 java/util/stream/test/org/openjdk/tests/java/util/stream/RangeTest.java	0000000	generic-all
