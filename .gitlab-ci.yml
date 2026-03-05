@@ -50,6 +50,7 @@ build_and_test_jdk:
     - dind
     - zulu
   stage: ci
+  timeout: 4h
   rules:
     - if: $CI_PIPELINE_SOURCE == "web"
       when: manual
