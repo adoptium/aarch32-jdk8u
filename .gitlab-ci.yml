@@ -195,9 +195,12 @@ sync_upstream_tags:
     - zulu
   rules:
     - if: $CI_PIPELINE_SOURCE == "schedule"
+    - when: manual  # allows triggering from any pipeline for testing
   variables:
     UPSTREAM_URL: "https://github.com/openjdk/aarch32-port-jdk8u.git"
     SYNC_BASE_BRANCH: "master"
+    # Set to "true" to skip git push and MR creation (safe for testing)
+    SYNC_DRY_RUN: "false"
     # Full clone so that all tags and history are available for merge-base checks
     GIT_DEPTH: "0"
 
@@ -254,9 +257,6 @@ sync_upstream_tags:
         git merge --no-ff -m "Merge upstream tag ${TAG}" "${TAG}"
       done <<< "${NEW_TAGS}"
 
-      # ── Push the sync branch ──────────────────────────────────────────────
-      git push origin "${SYNC_BRANCH}"
-
       # ── Compose MR title and description ──────────────────────────────────
       TAG_COUNT=$(echo "${NEW_TAGS}" | wc -l | tr -d ' ')
       FIRST_TAG=$(echo "${NEW_TAGS}" | head -1)
@@ -272,6 +272,21 @@ sync_upstream_tags:
       MR_DESC=$(printf \
         "Automated upstream sync from \`%s\`.\n\n### Merged tags (%s)\n\n%s" \
         "${UPSTREAM_URL}" "${TAG_COUNT}" "${TAG_BULLETS}")
+
+      if [ "${SYNC_DRY_RUN}" = "true" ]; then
+        echo ""
+        echo "=== DRY RUN — skipping git push and MR creation ==="
+        echo "Would push branch : ${SYNC_BRANCH}"
+        echo "Would open MR     : ${MR_TITLE}"
+        echo "MR description    :"
+        echo "${MR_DESC}"
+        exit 0
+      fi
+
+      # ── Push the sync branch ──────────────────────────────────────────────
+      git remote set-url origin \
+        "https://oauth2:${GITLAB_API_TOKEN}@${CI_SERVER_HOST}/${CI_PROJECT_PATH}.git"
+      git push origin "${SYNC_BRANCH}"
 
       # ── Open the MR via GitLab API ────────────────────────────────────────
       curl --fail --silent --show-error \
