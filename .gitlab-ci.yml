@@ -200,11 +200,8 @@ sync_upstream_tags:
     - zulu
   rules:
     - if: $CI_PIPELINE_SOURCE == "schedule"
-    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-      when: never
-    - if: $CI_COMMIT_BRANCH
-      when: never
-    - when: manual
+    - if: $CI_PIPELINE_SOURCE == "web"
+    - when: never
   variables:
     UPSTREAM_URL: "https://github.com/openjdk/jdk8u.git"
     SYNC_BASE_BRANCH: "master"
