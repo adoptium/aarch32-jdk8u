@@ -67,6 +67,13 @@ java/util/Timer/KillThread.java					0000000	generic-all
 java/util/Timer/NameConstructors.java				0000000	generic-all
 java/util/Timer/Purge.java					0000000	generic-all
 
+# Properties failures on aarch32
+java/util/Properties/ConcurrentLoadAndStoreXML.java		0000000	generic-all
+
+# TreeMap failures on aarch32 (agent broken pipe)
+java/util/TreeMap/Clone.java					0000000	generic-all
+java/util/TreeMap/ContainsValue.java				0000000	generic-all
+
 # Other util failures on aarch32
 java/util/StringJoiner/MergeTest.java				0000000	generic-all
 java/util/StringJoiner/StringJoinerTest.java			0000000	generic-all
