@@ -21,6 +21,7 @@ compiler/8002069/Test8002069.java			0000000	generic-all
 compiler/8004051/Test8004051.java			0000000	generic-all
 compiler/8004741/Test8004741.java			0000000	generic-all
 compiler/8005033/Test8005033.java			0000000	generic-all
+compiler/8005419/Test8005419.java			0000000	generic-all
 compiler/8004867/TestIntAtomicCAS.java			0000000	generic-all
 compiler/8004867/TestIntAtomicOrdered.java		0000000	generic-all
 compiler/8004867/TestIntAtomicVolatile.java		0000000	generic-all
