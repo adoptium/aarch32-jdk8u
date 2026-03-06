@@ -29,6 +29,7 @@ compiler/8010927/Test8010927.java			0000000	generic-all
 compiler/8011706/Test8011706.java			0000000	generic-all
 compiler/8011771/Test8011771.java			0000000	generic-all
 compiler/8011901/Test8011901.java			0000000	generic-all
+compiler/8015436/Test8015436.java			0000000	generic-all
 compiler/8004867/TestIntAtomicCAS.java			0000000	generic-all
 compiler/8004867/TestIntAtomicOrdered.java		0000000	generic-all
 compiler/8004867/TestIntAtomicVolatile.java		0000000	generic-all
@@ -95,6 +96,8 @@ compiler/membars/TestMemBarAcquire.java			0000000	generic-all
 compiler/oracle/TestCompileCommand.java			0000000	generic-all
 compiler/parsing/TestMissingSafepointOnTryCatch.java	0000000	generic-all
 compiler/parsing/UnreachableBlockFallsThroughEndOfCode.java	0000000	generic-all
+compiler/print/PrintInlining.java			0000000	generic-all
+compiler/print/TestProfileReturnTypePrinting.java	0000000	generic-all
 compiler/osr/TestOSRWithNonEmptyStack.java		0000000	generic-all
 compiler/osr/TestRangeCheck.java			0000000	generic-all
 compiler/rangechecks/RangeCheckEliminationScaleNotOne.java	0000000	generic-all
