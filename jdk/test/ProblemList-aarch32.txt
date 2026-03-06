@@ -88,6 +88,7 @@ java/util/TimeZone/HongKong.java				0000000	generic-all
 java/util/TimeZone/IDTest.java					0000000	generic-all
 java/util/TimeZone/ListTimeZones.java				0000000	generic-all
 java/util/TimeZone/OldIDMappingTest.java			0000000	generic-all
+java/util/TimeZone/OldIDMappingTest.sh				0000000	generic-all
 java/util/TimeZone/SetDefaultSecurityTest.java			0000000	generic-all
 java/util/TimeZone/TimeZoneBoundaryTest.java			0000000	generic-all
 java/util/TimeZone/TimeZoneDatePermissionCheck.java		0000000	generic-all
