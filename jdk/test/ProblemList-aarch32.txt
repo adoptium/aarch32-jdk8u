@@ -70,9 +70,15 @@ java/util/Timer/Purge.java					0000000	generic-all
 # Properties failures on aarch32
 java/util/Properties/ConcurrentLoadAndStoreXML.java		0000000	generic-all
 
-# TreeMap failures on aarch32 (agent broken pipe)
+# TreeMap failures on aarch32 (agent broken pipe — entire directory)
 java/util/TreeMap/Clone.java					0000000	generic-all
 java/util/TreeMap/ContainsValue.java				0000000	generic-all
+java/util/TreeMap/EmptyMapAndNulls.java				0000000	generic-all
+java/util/TreeMap/HeadTailTypeError.java			0000000	generic-all
+java/util/TreeMap/NullAtEnd.java				0000000	generic-all
+java/util/TreeMap/NullPermissiveComparator.java			0000000	generic-all
+java/util/TreeMap/SubMap.java					0000000	generic-all
+java/util/TreeMap/SubMapClear.java				0000000	generic-all
 
 # Other util failures on aarch32
 java/util/StringJoiner/MergeTest.java				0000000	generic-all
