@@ -66,6 +66,8 @@ compiler/loopopts/BadPredicateAfterPartialPeel.java	0000000	generic-all
 compiler/loopopts/ConstFPVectorization.java		0000000	generic-all
 compiler/loopopts/CountedLoopProblem.java		0000000	generic-all
 compiler/loopopts/TestArraysFillDeadControl.java	0000000	generic-all
+compiler/loopopts/TestBeautifyLoops.java		0000000	generic-all
+compiler/loopopts/TestBeautifyLoops_2.java		0000000	generic-all
 compiler/loopopts/superword/TestFuzzPreLoop.java	0000000	generic-all
 compiler/loopopts/superword/TestNegBaseOffset.java	0000000	generic-all
 compiler/loopopts/superword/TestVectorizationWithInvariant.java	0000000	generic-all

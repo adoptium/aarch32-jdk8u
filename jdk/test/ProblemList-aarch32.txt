@@ -25,6 +25,10 @@ java/util/concurrent/BlockingQueue/CancelledProducerConsumerLoops.java	0000000	g
 java/util/concurrent/BlockingQueue/Interrupt.java		0000000	generic-all
 java/util/concurrent/BlockingQueue/MultipleProducersSingleConsumerLoops.java	0000000	generic-all
 java/util/concurrent/BlockingQueue/OfferDrainToLoops.java	0000000	generic-all
+java/util/concurrent/BlockingQueue/ProducerConsumerLoops.java	0000000	generic-all
+java/util/concurrent/BlockingQueue/SingleProducerMultipleConsumerLoops.java	0000000	generic-all
+java/util/concurrent/BlockingQueue/LastElement.java		0000000	generic-all
+java/util/concurrent/BlockingQueue/PollMemoryLeak.java		0000000	generic-all
 java/util/concurrent/forkjoin/FJExceptionTableLeak.java		0000000	generic-all
 java/util/concurrent/forkjoin/Integrate.java			0000000	generic-all
 java/util/concurrent/locks/StampedLock/Basic.java		0000000	generic-all
