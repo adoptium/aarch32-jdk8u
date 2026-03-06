@@ -40,6 +40,7 @@ compiler/8001183/TestCharVect.java			0000000	generic-all
 compiler/8209951/TestCipherBlockChainingEncrypt.java	0000000	generic-all
 compiler/arraycopy/TestInitializingACLoadWithBadMem.java	0000000	generic-all
 compiler/c1/MultiplyByMaxInt.java			0000000	generic-all
+compiler/c1/Test8172751.java				0000000	generic-all
 compiler/arguments/TestUseBMI1InstructionsOnSupportedCPU.java	0000000	generic-all
 compiler/arguments/TestUseBMI1InstructionsOnUnsupportedCPU.java	0000000	generic-all
 compiler/arguments/TestUseCountLeadingZerosInstructionOnSupportedCPU.java	0000000	generic-all
@@ -113,6 +114,7 @@ compiler/profiling/unloadingconflict/TestProfileConflictClassUnloading.java	0000
 compiler/osr/TestOSRWithNonEmptyStack.java		0000000	generic-all
 compiler/osr/TestRangeCheck.java			0000000	generic-all
 compiler/rangechecks/RangeCheckEliminationScaleNotOne.java	0000000	generic-all
+compiler/reflection/ArrayNewInstanceOfVoid.java		0000000	generic-all
 compiler/tiered/Level2RecompilationTest.java		0000000	generic-all
 testlibrary/ctw/test/ClassesListTest.java		0000000	generic-all
 
