@@ -20,6 +20,7 @@ compiler/8000805/Test8000805.java			0000000	generic-all
 compiler/8002069/Test8002069.java			0000000	generic-all
 compiler/8004051/Test8004051.java			0000000	generic-all
 compiler/8004741/Test8004741.java			0000000	generic-all
+compiler/8005033/Test8005033.java			0000000	generic-all
 compiler/8004867/TestIntAtomicCAS.java			0000000	generic-all
 compiler/8004867/TestIntAtomicOrdered.java		0000000	generic-all
 compiler/8004867/TestIntAtomicVolatile.java		0000000	generic-all
@@ -64,6 +65,7 @@ compiler/loopopts/TestUnrollLimitPreciseType.java#test1	0000000	generic-all
 compiler/loopopts/BadPredicateAfterPartialPeel.java	0000000	generic-all
 compiler/loopopts/ConstFPVectorization.java		0000000	generic-all
 compiler/loopopts/CountedLoopProblem.java		0000000	generic-all
+compiler/loopopts/TestArraysFillDeadControl.java	0000000	generic-all
 compiler/loopopts/superword/TestFuzzPreLoop.java	0000000	generic-all
 compiler/loopopts/superword/TestNegBaseOffset.java	0000000	generic-all
 compiler/loopopts/superword/TestVectorizationWithInvariant.java	0000000	generic-all
