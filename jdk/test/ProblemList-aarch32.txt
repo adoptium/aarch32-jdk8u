@@ -89,6 +89,9 @@ java/util/TreeMap/SubMap.java					0000000	generic-all
 java/util/TreeMap/SubMapClear.java				0000000	generic-all
 
 # Other util failures on aarch32
+java/util/Map/InPlaceOpsCollisions.java			0000000	generic-all
+java/util/Map/LockStep.java				0000000	generic-all
+
 java/util/StringJoiner/MergeTest.java				0000000	generic-all
 java/util/StringJoiner/StringJoinerTest.java			0000000	generic-all
 java/util/StringTokenizer/FormFeed.java				0000000	generic-all

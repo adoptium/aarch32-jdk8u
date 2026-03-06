@@ -25,6 +25,7 @@ compiler/8005419/Test8005419.java			0000000	generic-all
 compiler/8005956/PolynomialRoot.java			0000000	generic-all
 compiler/8007294/Test8007294.java			0000000	generic-all
 compiler/8007722/Test8007722.java			0000000	generic-all
+compiler/8010927/Test8010927.java			0000000	generic-all
 compiler/8004867/TestIntAtomicCAS.java			0000000	generic-all
 compiler/8004867/TestIntAtomicOrdered.java		0000000	generic-all
 compiler/8004867/TestIntAtomicVolatile.java		0000000	generic-all
@@ -86,6 +87,8 @@ compiler/loopopts/superword/TestFuzzPreLoop.java	0000000	generic-all
 compiler/loopopts/superword/TestNegBaseOffset.java	0000000	generic-all
 compiler/loopopts/superword/TestVectorizationWithInvariant.java	0000000	generic-all
 compiler/macronodes/TestEliminateAllocationPhi.java		0000000	generic-all
+compiler/membars/DekkerTest.java			0000000	generic-all
+compiler/membars/TestMemBarAcquire.java			0000000	generic-all
 compiler/rangechecks/RangeCheckEliminationScaleNotOne.java	0000000	generic-all
 compiler/tiered/Level2RecompilationTest.java		0000000	generic-all
 testlibrary/ctw/test/ClassesListTest.java		0000000	generic-all
