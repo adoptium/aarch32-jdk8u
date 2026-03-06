@@ -23,6 +23,7 @@ java/math/BigInteger/CompareToTests.java			0000000	generic-all
 java/util/concurrent/ConcurrentQueues/RemovePollRace.java	0000000	generic-all
 java/util/concurrent/ExecutorCompletionService/ExecutorCompletionServiceLoops.java	0000000	generic-all
 java/util/concurrent/Executors/AutoShutdown.java	0000000	generic-all
+java/util/concurrent/ThreadLocalRandom/ThreadLocalRandomTest.java	0000000	generic-all
 java/util/concurrent/Phaser/Arrive.java			0000000	generic-all
 java/util/concurrent/locks/ReentrantReadWriteLock/MapLoops.java	0000000	generic-all
 java/util/concurrent/BlockingQueue/CancelledProducerConsumerLoops.java	0000000	generic-all

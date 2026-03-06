@@ -44,6 +44,7 @@ compiler/c1/Test8172751.java				0000000	generic-all
 compiler/c1/TestArrayCopyToFromObject.java		0000000	generic-all
 compiler/c1/TestGotoIfMain.java				0000000	generic-all
 compiler/c1/TestPinnedIntrinsics.java			0000000	generic-all
+compiler/c1/TestUnresolvedFieldMain.java		0000000	generic-all
 compiler/arguments/TestUseBMI1InstructionsOnSupportedCPU.java	0000000	generic-all
 compiler/arguments/TestUseBMI1InstructionsOnUnsupportedCPU.java	0000000	generic-all
 compiler/arguments/TestUseCountLeadingZerosInstructionOnSupportedCPU.java	0000000	generic-all
@@ -163,6 +164,16 @@ compiler/rtm/locking/TestUseRTMXendForLockBusy.java	0000000	generic-all
 compiler/rtm/method_options/TestNoRTMLockElidingOption.java	0000000	generic-all
 compiler/rtm/method_options/TestUseRTMLockElidingOption.java	0000000	generic-all
 compiler/rtm/print/TestPrintPreciseRTMLockingStatistics.java	0000000	generic-all
+# Stable field tests — all fail on aarch32
+compiler/stable/TestStableBoolean.java			0000000	generic-all
+compiler/stable/TestStableByte.java			0000000	generic-all
+compiler/stable/TestStableChar.java			0000000	generic-all
+compiler/stable/TestStableDouble.java			0000000	generic-all
+compiler/stable/TestStableFloat.java			0000000	generic-all
+compiler/stable/TestStableInt.java			0000000	generic-all
+compiler/stable/TestStableLong.java			0000000	generic-all
+compiler/stable/TestStableObject.java			0000000	generic-all
+compiler/stable/TestStableShort.java			0000000	generic-all
 compiler/tiered/Level2RecompilationTest.java		0000000	generic-all
 testlibrary/ctw/test/ClassesListTest.java		0000000	generic-all
 
