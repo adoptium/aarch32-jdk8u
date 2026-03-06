@@ -46,6 +46,7 @@ compiler/c1/TestGotoIfMain.java				0000000	generic-all
 compiler/c1/TestPinnedIntrinsics.java			0000000	generic-all
 compiler/c1/TestUnresolvedFieldMain.java		0000000	generic-all
 compiler/c1/UnsafeVolatileGuardTest.java		0000000	generic-all
+compiler/c1/VolatileGuardTest.java			0000000	generic-all
 compiler/arguments/TestUseBMI1InstructionsOnSupportedCPU.java	0000000	generic-all
 compiler/arguments/TestUseBMI1InstructionsOnUnsupportedCPU.java	0000000	generic-all
 compiler/arguments/TestUseCountLeadingZerosInstructionOnSupportedCPU.java	0000000	generic-all
@@ -167,6 +168,8 @@ compiler/rtm/method_options/TestUseRTMLockElidingOption.java	0000000	generic-all
 compiler/rtm/print/TestPrintPreciseRTMLockingStatistics.java	0000000	generic-all
 # Stable field tests — all fail on aarch32
 compiler/startup/NumCompilerThreadsCheck.java		0000000	generic-all
+compiler/stringopts/TestOptimizeStringConcat.java	0000000	generic-all
+compiler/stringopts/TestStringObjectInitialization.java	0000000	generic-all
 compiler/startup/SmallCodeCacheStartup.java		0000000	generic-all
 compiler/startup/StartupOutput.java			0000000	generic-all
 compiler/stable/TestStableBoolean.java			0000000	generic-all
