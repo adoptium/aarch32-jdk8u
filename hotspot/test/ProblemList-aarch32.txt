@@ -39,6 +39,11 @@ compiler/8004867/TestIntUnsafeVolatile.java		0000000	generic-all
 compiler/8001183/TestCharVect.java			0000000	generic-all
 compiler/8209951/TestCipherBlockChainingEncrypt.java	0000000	generic-all
 compiler/arguments/TestUseBMI1InstructionsOnSupportedCPU.java	0000000	generic-all
+compiler/arguments/TestUseBMI1InstructionsOnUnsupportedCPU.java	0000000	generic-all
+compiler/arguments/TestUseCountLeadingZerosInstructionOnSupportedCPU.java	0000000	generic-all
+compiler/arguments/TestUseCountLeadingZerosInstructionOnUnsupportedCPU.java	0000000	generic-all
+compiler/arguments/TestUseCountTrailingZerosInstructionOnSupportedCPU.java	0000000	generic-all
+compiler/arguments/TestUseCountTrailingZerosInstructionOnUnsupportedCPU.java	0000000	generic-all
 compiler/c2/Test8202414.java				0000000	generic-all
 compiler/c2/cr6340864/TestByteVect.java			0000000	generic-all
 compiler/c2/cr6340864/TestDoubleVect.java		0000000	generic-all
@@ -98,6 +103,7 @@ compiler/parsing/TestMissingSafepointOnTryCatch.java	0000000	generic-all
 compiler/parsing/UnreachableBlockFallsThroughEndOfCode.java	0000000	generic-all
 compiler/print/PrintInlining.java			0000000	generic-all
 compiler/print/TestProfileReturnTypePrinting.java	0000000	generic-all
+compiler/profiling/spectrapredefineclass/Launcher.java	0000000	generic-all
 compiler/osr/TestOSRWithNonEmptyStack.java		0000000	generic-all
 compiler/osr/TestRangeCheck.java			0000000	generic-all
 compiler/rangechecks/RangeCheckEliminationScaleNotOne.java	0000000	generic-all
