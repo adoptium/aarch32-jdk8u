@@ -21,6 +21,7 @@ compiler/8002069/Test8002069.java			0000000	generic-all
 compiler/8004051/Test8004051.java			0000000	generic-all
 compiler/8004741/Test8004741.java			0000000	generic-all
 compiler/8004867/TestIntAtomicCAS.java			0000000	generic-all
+compiler/8004867/TestIntAtomicOrdered.java		0000000	generic-all
 compiler/8001183/TestCharVect.java			0000000	generic-all
 compiler/8209951/TestCipherBlockChainingEncrypt.java	0000000	generic-all
 compiler/arguments/TestUseBMI1InstructionsOnSupportedCPU.java	0000000	generic-all
@@ -35,6 +36,7 @@ compiler/codegen/TestCharVect2.java			0000000	generic-all
 compiler/criticalnatives/argumentcorruption/Test8167409.sh	0000000	generic-all
 compiler/escapeAnalysis/TestGetClass.java		0000000	generic-all
 compiler/gcbarriers/PreserveFPRegistersTest.java	0000000	generic-all
+compiler/intrinsics/sha/TestSHA.java			0000000	generic-all
 compiler/intrinsics/sha/cli/TestUseSHA1IntrinsicsOptionOnSupportedCPU.java	0000000	generic-all
 compiler/intrinsics/sha/cli/TestUseSHA1IntrinsicsOptionOnUnsupportedCPU.java	0000000	generic-all
 compiler/intrinsics/sha/cli/TestUseSHA256IntrinsicsOptionOnSupportedCPU.java	0000000	generic-all
