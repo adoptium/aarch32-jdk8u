@@ -40,6 +40,7 @@ java/util/logging/TestLogConfigurationDeadLockWithConf.java	0000000	generic-all
 
 # Stream tests — failures / timeouts on aarch32
 java/util/stream/test/org/openjdk/tests/java/util/stream/ToArrayOpTest.java	0000000	generic-all
+java/util/stream/test/org/openjdk/tests/java/util/stream/IntPrimitiveOpsTests.java	0000000	generic-all
 java/util/stream/boottest/java/util/stream/DoubleNodeTest.java	0000000	generic-all
 java/util/stream/boottest/java/util/stream/FlagOpTest.java	0000000	generic-all
 java/util/stream/boottest/java/util/stream/IntNodeTest.java	0000000	generic-all

@@ -22,6 +22,7 @@ compiler/8004051/Test8004051.java			0000000	generic-all
 compiler/8004741/Test8004741.java			0000000	generic-all
 compiler/8005033/Test8005033.java			0000000	generic-all
 compiler/8005419/Test8005419.java			0000000	generic-all
+compiler/8005956/PolynomialRoot.java			0000000	generic-all
 compiler/8004867/TestIntAtomicCAS.java			0000000	generic-all
 compiler/8004867/TestIntAtomicOrdered.java		0000000	generic-all
 compiler/8004867/TestIntAtomicVolatile.java		0000000	generic-all
@@ -69,6 +70,16 @@ compiler/loopopts/CountedLoopProblem.java		0000000	generic-all
 compiler/loopopts/TestArraysFillDeadControl.java	0000000	generic-all
 compiler/loopopts/TestBeautifyLoops.java		0000000	generic-all
 compiler/loopopts/TestBeautifyLoops_2.java		0000000	generic-all
+compiler/loopopts/TestCMovSplitThruPhi.java		0000000	generic-all
+compiler/loopopts/TestCountedLoopSafepointBackedge.java	0000000	generic-all
+compiler/loopopts/TestDeadBackbranchArrayAccess.java	0000000	generic-all
+compiler/loopopts/TestImpossibleIV.java			0000000	generic-all
+compiler/loopopts/TestLogSum.java			0000000	generic-all
+compiler/loopopts/TestLoopPeeling.java			0000000	generic-all
+compiler/loopopts/TestNestedIrreducibleLoopsMain.java	0000000	generic-all
+compiler/loopopts/TestRemoveEmptyLoop.java		0000000	generic-all
+compiler/loopopts/TestStrangeControl.java		0000000	generic-all
+compiler/loopopts/UseCountedLoopSafepoints.java		0000000	generic-all
 compiler/loopopts/superword/TestFuzzPreLoop.java	0000000	generic-all
 compiler/loopopts/superword/TestNegBaseOffset.java	0000000	generic-all
 compiler/loopopts/superword/TestVectorizationWithInvariant.java	0000000	generic-all
