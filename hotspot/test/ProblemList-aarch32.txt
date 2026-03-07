@@ -83,7 +83,9 @@ compiler/criticalnatives/argumentcorruption/Test8167409.sh	0000000	generic-all
 compiler/escapeAnalysis/TestEABadMergeMem.java		0000000	generic-all
 compiler/escapeAnalysis/TestEscapeThroughInvoke.java	0000000	generic-all
 compiler/escapeAnalysis/TestGetClass.java		0000000	generic-all
+compiler/gcbarriers/G1CrashTest.java			0000000	generic-all
 compiler/gcbarriers/PreserveFPRegistersTest.java	0000000	generic-all
+compiler/gcbarriers/TestMembarDependencies.java		0000000	generic-all
 compiler/intrinsics/sha/TestSHA.java			0000000	generic-all
 compiler/intrinsics/sha/cli/TestUseSHA1IntrinsicsOptionOnSupportedCPU.java	0000000	generic-all
 compiler/intrinsics/sha/cli/TestUseSHA1IntrinsicsOptionOnUnsupportedCPU.java	0000000	generic-all
@@ -293,6 +295,8 @@ gc/g1/TestStringSymbolTableStats.java			0000000	generic-all
 # Runtime tests — failures on aarch32
 runtime/6929067/Test6929067.sh				0000000	generic-all
 runtime/6981737/Test6981737.java			0000000	generic-all
+runtime/7100935/TestConjointAtomicArraycopy.java	0000000	generic-all
+runtime/7100935/TestShortArraycopy.java			0000000	generic-all
 runtime/8003720/Test8003720.java			0000000	generic-all
 runtime/8007320/ConstMethodTest.java			0000000	generic-all
 runtime/CDSCompressedKPtrs/XShareAuto.java		0000000	generic-all
