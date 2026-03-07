@@ -24,6 +24,7 @@ java/util/concurrent/ConcurrentQueues/RemovePollRace.java	0000000	generic-all
 java/util/concurrent/ExecutorCompletionService/ExecutorCompletionServiceLoops.java	0000000	generic-all
 java/util/concurrent/Executors/AutoShutdown.java	0000000	generic-all
 java/util/concurrent/ThreadLocalRandom/ThreadLocalRandomTest.java	0000000	generic-all
+java/util/Random/RandomTest.java			0000000	generic-all
 java/util/ResourceBundle/Control/StressTest.java	0000000	generic-all
 java/util/concurrent/Phaser/Arrive.java			0000000	generic-all
 java/util/concurrent/locks/ReentrantReadWriteLock/MapLoops.java	0000000	generic-all
@@ -47,6 +48,7 @@ java/util/logging/TestLogConfigurationDeadLockWithConf.java	0000000	generic-all
 java/util/logging/TestLoggerBundleSync.java			0000000	generic-all
 
 # Stream tests — failures / timeouts on aarch32
+java/util/regex/PatternStreamTest.java			0000000	generic-all
 java/util/stream/boottest/java/util/stream/StreamReuseTest.java	0000000	generic-all
 java/util/stream/test/org/openjdk/tests/java/util/stream/ReduceByOpTest.java	0000000	generic-all
 java/util/stream/test/org/openjdk/tests/java/util/stream/ToArrayOpTest.java	0000000	generic-all
