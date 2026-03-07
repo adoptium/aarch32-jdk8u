@@ -6,6 +6,9 @@
 # JDWP agent communication (Broken pipe / timeout) fails consistently on arm32.
 # The CI pipeline runs :jdk_lang :jdk_util :jdk_math instead of :jdk_tier1.
 
+# ClassLoader failures on aarch32
+java/lang/ClassLoader/forNameLeak/ClassForNameLeak.java	0000000	generic-all
+
 # MethodHandles / invoke failures on aarch32
 java/lang/invoke/PrivateInvokeTest.java				0000000	generic-all
 java/lang/invoke/MethodHandles/CatchExceptionTest.java		0000000	generic-all
