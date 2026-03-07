@@ -239,6 +239,8 @@ compiler/debug/VerifyAdapterSharing.java		0000000	generic-all
 compiler/dependencies/MonomorphicObjectCall/TestMonomorphicObjectCall.java	0000000	generic-all
 compiler/exceptions/CatchInlineExceptions.java		0000000	generic-all
 compiler/floatingpoint/TestPow2.java			0000000	generic-all
+compiler/integerArithmetic/MultiplyByConstantLongMax.java	0000000	generic-all
+compiler/integerArithmetic/MultiplyByIntegerMinHang.java	0000000	generic-all
 compiler/inlining/DefaultAndConcreteMethodsCHA.java	0000000	generic-all
 compiler/inlining/DefaultMethodsDependencies.java	0000000	generic-all
 compiler/inlining/InlineDefaultMethod.java		0000000	generic-all
@@ -303,6 +305,7 @@ runtime/6981737/Test6981737.java			0000000	generic-all
 runtime/7100935/TestConjointAtomicArraycopy.java	0000000	generic-all
 runtime/7100935/TestShortArraycopy.java			0000000	generic-all
 runtime/7116786/Test7116786.java			0000000	generic-all
+runtime/7160757/Test7160757.java			0000000	generic-all
 runtime/8003720/Test8003720.java			0000000	generic-all
 runtime/8007320/ConstMethodTest.java			0000000	generic-all
 runtime/CDSCompressedKPtrs/XShareAuto.java		0000000	generic-all
