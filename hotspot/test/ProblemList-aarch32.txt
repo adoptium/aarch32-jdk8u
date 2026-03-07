@@ -243,6 +243,7 @@ compiler/integerArithmetic/MultiplyByConstantLongMax.java	0000000	generic-all
 compiler/integerArithmetic/MultiplyByIntegerMinHang.java	0000000	generic-all
 compiler/intrinsics/clone/TestObjectClone.java		0000000	generic-all
 compiler/intrinsics/hashcode/TestHashCode.java		0000000	generic-all
+compiler/intrinsics/klass/TestIsPrimitive.java		0000000	generic-all
 compiler/intrinsics/bmi/BMITestRunner.java		0000000	generic-all
 compiler/intrinsics/bmi/TestAndnI.java			0000000	generic-all
 compiler/intrinsics/bmi/TestAndnL.java			0000000	generic-all
@@ -336,6 +337,7 @@ runtime/7160757/Test7160757.java			0000000	generic-all
 runtime/7167069/PrintAsFlag.java			0000000	generic-all
 runtime/8007475/StackMapFrameTest.java			0000000	generic-all
 runtime/8010389/VMThreadDlopen.java			0000000	generic-all
+runtime/8024804/RegisterNatives.java			0000000	generic-all
 runtime/8003720/Test8003720.java			0000000	generic-all
 runtime/8007320/ConstMethodTest.java			0000000	generic-all
 runtime/CDSCompressedKPtrs/XShareAuto.java		0000000	generic-all
