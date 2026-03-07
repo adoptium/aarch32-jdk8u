@@ -80,6 +80,8 @@ compiler/codegen/LoadWithMask2.java			0000000	generic-all
 compiler/codegen/TestCharVect2.java			0000000	generic-all
 compiler/codegen/8144028/BitTests.java			0000000	generic-all
 compiler/criticalnatives/argumentcorruption/Test8167409.sh	0000000	generic-all
+compiler/escapeAnalysis/TestEABadMergeMem.java		0000000	generic-all
+compiler/escapeAnalysis/TestEscapeThroughInvoke.java	0000000	generic-all
 compiler/escapeAnalysis/TestGetClass.java		0000000	generic-all
 compiler/gcbarriers/PreserveFPRegistersTest.java	0000000	generic-all
 compiler/intrinsics/sha/TestSHA.java			0000000	generic-all
@@ -241,6 +243,7 @@ gc/concurrentMarkSweep/DisableResizePLAB.java		0000000	generic-all
 gc/concurrentMarkSweep/GuardShrinkWarning.java		0000000	generic-all
 gc/concurrentMarkSweep/SystemGCOnForegroundCollector.java	0000000	generic-all
 gc/logging/TestGCId.java				0000000	generic-all
+gc/parallelScavenge/AdaptiveGCBoundary.java		0000000	generic-all
 
 # GC stress / whitebox failures on aarch32
 gc/g1/mixedgc/TestOldGenCollectionUsage.java		0000000	generic-all
