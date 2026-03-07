@@ -399,6 +399,7 @@ runtime/8026394/InterfaceObjectTest.java		0000000	generic-all
 runtime/8003720/Test8003720.java			0000000	generic-all
 runtime/8007320/ConstMethodTest.java			0000000	generic-all
 runtime/CDSCompressedKPtrs/CDSCompressedKPtrs.java	0000000	generic-all
+runtime/CDSCompressedKPtrs/CDSCompressedKPtrsError.java	0000000	generic-all
 runtime/CDSCompressedKPtrs/XShareAuto.java		0000000	generic-all
 runtime/InitialThreadOverflow/testme.sh			0000000	generic-all
 runtime/StackGap/testme.sh				0000000	generic-all
