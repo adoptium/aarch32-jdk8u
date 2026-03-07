@@ -227,12 +227,14 @@ compiler/types/TestTypePropagationToCmpU.java		0000000	generic-all
 compiler/types/TypeSpeculation.java			0000000	generic-all
 compiler/conversions/TestPrimitiveConversions.java	0000000	generic-all
 compiler/cpuflags/RestoreMXCSR.java			0000000	generic-all
+compiler/debug/VerifyAdapterSharing.java		0000000	generic-all
 compiler/vectorization/TestVectorUnalignedOffset.java	0000000	generic-all
 testlibrary/ctw/test/ClassesListTest.java		0000000	generic-all
 
 # GC tests — broken pipe on aarch32
 gc/6845368/bigobj.java					0000000	generic-all
 gc/6941923/Test6941923.java				0000000	generic-all
+gc/concurrentMarkSweep/CheckAllocateAndSystemGC.java	0000000	generic-all
 
 # GC stress / whitebox failures on aarch32
 gc/g1/mixedgc/TestOldGenCollectionUsage.java		0000000	generic-all
