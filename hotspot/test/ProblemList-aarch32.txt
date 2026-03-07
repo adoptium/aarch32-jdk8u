@@ -72,7 +72,13 @@ compiler/c2/cr6340864/TestFloatVect.java		0000000	generic-all
 compiler/c2/cr6340864/TestIntVect.java			0000000	generic-all
 compiler/c2/cr6340864/TestLongVect.java			0000000	generic-all
 compiler/c2/cr6340864/TestShortVect.java		0000000	generic-all
+compiler/codegen/BMI1.java				0000000	generic-all
+compiler/codegen/C1NullCheckOfNullStore.java		0000000	generic-all
+compiler/codegen/IntRotateWithImmediate.java		0000000	generic-all
+compiler/codegen/LoadWithMask.java			0000000	generic-all
+compiler/codegen/LoadWithMask2.java			0000000	generic-all
 compiler/codegen/TestCharVect2.java			0000000	generic-all
+compiler/codegen/8144028/BitTests.java			0000000	generic-all
 compiler/criticalnatives/argumentcorruption/Test8167409.sh	0000000	generic-all
 compiler/escapeAnalysis/TestGetClass.java		0000000	generic-all
 compiler/gcbarriers/PreserveFPRegistersTest.java	0000000	generic-all
@@ -219,6 +225,7 @@ compiler/types/TestMeetTopArrayExactConstantArray.java	0000000	generic-all
 compiler/types/TestSpeculationFailedHigherEqual.java	0000000	generic-all
 compiler/types/TestTypePropagationToCmpU.java		0000000	generic-all
 compiler/types/TypeSpeculation.java			0000000	generic-all
+compiler/vectorization/TestVectorUnalignedOffset.java	0000000	generic-all
 testlibrary/ctw/test/ClassesListTest.java		0000000	generic-all
 
 # GC stress / whitebox failures on aarch32
