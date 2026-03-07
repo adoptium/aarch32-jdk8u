@@ -299,6 +299,7 @@ compiler/intrinsics/mathexact/sanity/NegateExactLongTest.java	0000000	generic-al
 compiler/intrinsics/mathexact/sanity/SubtractExactIntTest.java	0000000	generic-all
 compiler/intrinsics/mathexact/sanity/SubtractExactLongTest.java	0000000	generic-all
 compiler/intrinsics/muladd/TestMulAdd.java		0000000	generic-all
+compiler/intrinsics/multiplytolen/TestMultiplyToLen.java	0000000	generic-all
 compiler/intrinsics/bmi/BMITestRunner.java		0000000	generic-all
 compiler/intrinsics/bmi/TestAndnI.java			0000000	generic-all
 compiler/intrinsics/bmi/TestAndnL.java			0000000	generic-all
