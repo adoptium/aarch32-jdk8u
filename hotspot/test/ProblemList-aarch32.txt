@@ -401,6 +401,14 @@ runtime/8007320/ConstMethodTest.java			0000000	generic-all
 runtime/CDSCompressedKPtrs/CDSCompressedKPtrs.java	0000000	generic-all
 runtime/CheckEndorsedAndExtDirs/EndorsedExtDirs.java	0000000	generic-all
 runtime/ClassResolutionFail/TestClassResolutionFail.java	0000000	generic-all
+runtime/ClassUnload/ConstantPoolDependsTest.java	0000000	generic-all
+runtime/ClassUnload/DictionaryDependsTest.java		0000000	generic-all
+runtime/ClassUnload/KeepAliveClass.java			0000000	generic-all
+runtime/ClassUnload/KeepAliveClassLoader.java		0000000	generic-all
+runtime/ClassUnload/KeepAliveObject.java		0000000	generic-all
+runtime/ClassUnload/KeepAliveSoftReference.java		0000000	generic-all
+runtime/ClassUnload/SuperDependsTest.java		0000000	generic-all
+runtime/ClassUnload/UnloadTest.java			0000000	generic-all
 runtime/classFileParserBug/BadNameAndType.java		0000000	generic-all
 runtime/classFileParserBug/TestEmptyBootstrapMethodsAttr.java	0000000	generic-all
 runtime/CDSCompressedKPtrs/CDSCompressedKPtrsError.java	0000000	generic-all
