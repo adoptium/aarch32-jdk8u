@@ -55,6 +55,8 @@ compiler/arguments/TestUseCountTrailingZerosInstructionOnSupportedCPU.java	00000
 compiler/arguments/TestUseCountTrailingZerosInstructionOnUnsupportedCPU.java	0000000	generic-all
 compiler/c2/FloatingPointFoldingTest.java		0000000	generic-all
 compiler/classUnloading/anonymousClass/TestAnonymousClassUnloading.java	0000000	generic-all
+compiler/codecache/CheckReservedInitialCodeCacheSizeArgOrder.java	0000000	generic-all
+compiler/codecache/CheckUpperLimit.java			0000000	generic-all
 compiler/classUnloading/methodUnloading/TestMethodUnloading.java	0000000	generic-all
 compiler/c2/SubsumingLoadsCauseFlagSpill.java		0000000	generic-all
 compiler/c2/Test7005594.java				0000000	generic-all
@@ -192,6 +194,14 @@ compiler/stable/TestStableLong.java			0000000	generic-all
 compiler/stable/TestStableObject.java			0000000	generic-all
 compiler/stable/TestStableShort.java			0000000	generic-all
 compiler/tiered/Level2RecompilationTest.java		0000000	generic-all
+compiler/unsafe/GetUnsafeObjectG1PreBarrier.java	0000000	generic-all
+compiler/unsafe/MixedUnsafeStoreObject.java		0000000	generic-all
+compiler/unsafe/OpaqueAccesses.java			0000000	generic-all
+compiler/unsafe/TestMisalignedUnsafeAccess.java		0000000	generic-all
+compiler/unsafe/TestRawAliasing.java			0000000	generic-all
+compiler/unsafe/TestUnsafeLoadControl.java		0000000	generic-all
+compiler/unsafe/TestUnsafeStaticFieldAccess.java	0000000	generic-all
+compiler/unsafe/UnsafeRaw.java				0000000	generic-all
 compiler/uncommontrap/StackOverflowGuardPagesOff.java	0000000	generic-all
 compiler/uncommontrap/TestDeoptOOM.java			0000000	generic-all
 compiler/uncommontrap/TestLockEliminatedAtDeopt.java	0000000	generic-all
