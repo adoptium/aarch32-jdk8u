@@ -140,3 +140,10 @@ java/util/stream/test/org/openjdk/tests/java/util/stream/FindFirstOpTest.java	00
 java/util/stream/test/org/openjdk/tests/java/util/stream/ForEachOpTest.java	0000000	generic-all
 java/util/stream/test/org/openjdk/tests/java/util/stream/LongPrimitiveOpsTests.java	0000000	generic-all
 java/util/stream/test/org/openjdk/tests/java/util/stream/RangeTest.java	0000000	generic-all
+
+# Tests with @ignore annotation — jtreg counts these as "Error" causing non-zero RC
+java/util/AbstractList/CheckForComodification.java		0000000	generic-all
+java/util/ResourceBundle/RestrictedBundleTest.java		0000000	generic-all
+java/util/ResourceBundle/Test4300693.java			0000000	generic-all
+java/util/WeakHashMap/GCDuringIteration.java			0000000	generic-all
+java/util/zip/3GBZipFiles.sh					0000000	generic-all
