@@ -298,6 +298,7 @@ compiler/intrinsics/mathexact/sanity/NegateExactIntTest.java	0000000	generic-all
 compiler/intrinsics/mathexact/sanity/NegateExactLongTest.java	0000000	generic-all
 compiler/intrinsics/mathexact/sanity/SubtractExactIntTest.java	0000000	generic-all
 compiler/intrinsics/mathexact/sanity/SubtractExactLongTest.java	0000000	generic-all
+compiler/intrinsics/muladd/TestMulAdd.java		0000000	generic-all
 compiler/intrinsics/bmi/BMITestRunner.java		0000000	generic-all
 compiler/intrinsics/bmi/TestAndnI.java			0000000	generic-all
 compiler/intrinsics/bmi/TestAndnL.java			0000000	generic-all
@@ -393,6 +394,7 @@ runtime/8007475/StackMapFrameTest.java			0000000	generic-all
 runtime/8010389/VMThreadDlopen.java			0000000	generic-all
 runtime/8024804/RegisterNatives.java			0000000	generic-all
 runtime/8026365/InvokeSpecialAnonTest.java		0000000	generic-all
+runtime/8026394/InterfaceObjectTest.java		0000000	generic-all
 runtime/8003720/Test8003720.java			0000000	generic-all
 runtime/8007320/ConstMethodTest.java			0000000	generic-all
 runtime/CDSCompressedKPtrs/XShareAuto.java		0000000	generic-all
