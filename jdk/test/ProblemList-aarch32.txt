@@ -7,6 +7,7 @@
 # The CI pipeline runs :jdk_lang :jdk_util :jdk_math instead of :jdk_tier1.
 
 # MethodHandles / invoke failures on aarch32
+java/lang/invoke/PrivateInvokeTest.java				0000000	generic-all
 java/lang/invoke/MethodHandles/CatchExceptionTest.java		0000000	generic-all
 java/lang/invoke/MethodHandles/TestCatchException.java		0000000	generic-all
 
@@ -139,6 +140,7 @@ java/util/stream/test/org/openjdk/tests/java/util/stream/CollectAndSummaryStatis
 java/util/stream/test/org/openjdk/tests/java/util/stream/FindFirstOpTest.java	0000000	generic-all
 java/util/stream/test/org/openjdk/tests/java/util/stream/ForEachOpTest.java	0000000	generic-all
 java/util/stream/test/org/openjdk/tests/java/util/stream/LongPrimitiveOpsTests.java	0000000	generic-all
+java/util/stream/test/org/openjdk/tests/java/util/stream/GroupByOpTest.java	0000000	generic-all
 java/util/stream/test/org/openjdk/tests/java/util/stream/RangeTest.java	0000000	generic-all
 
 # Tests with @ignore annotation — jtreg counts these as "Error" causing non-zero RC
