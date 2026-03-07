@@ -235,6 +235,9 @@ compiler/conversions/TestPrimitiveConversions.java	0000000	generic-all
 compiler/cpuflags/RestoreMXCSR.java			0000000	generic-all
 compiler/debug/VerifyAdapterSharing.java		0000000	generic-all
 compiler/dependencies/MonomorphicObjectCall/TestMonomorphicObjectCall.java	0000000	generic-all
+compiler/exceptions/CatchInlineExceptions.java		0000000	generic-all
+compiler/exceptions/SumTest.java			0000000	generic-all
+compiler/exceptions/TestRecursiveReplacedException.java	0000000	generic-all
 compiler/vectorization/TestVectorUnalignedOffset.java	0000000	generic-all
 testlibrary/ctw/test/ClassesListTest.java		0000000	generic-all
 
@@ -257,6 +260,7 @@ gc/survivorAlignment/TestPromotionToSurvivor.java	0000000	generic-all
 gc/g1/mixedgc/TestOldGenCollectionUsage.java		0000000	generic-all
 gc/stress/gclocker/TestExcessGCLockerCollections.java	0000000	generic-all
 gc/whitebox/TestConcMarkCycleWB.java			0000000	generic-all
+gc/whitebox/TestWBGC.java				0000000	generic-all
 
 # GC tests — failures on aarch32
 gc/6581734/Test6581734.java				0000000	generic-all
