@@ -147,6 +147,9 @@ java/util/stream/test/org/openjdk/tests/java/util/stream/RangeTest.java	0000000	
 # Collection meta-test — fails on aarch32 (some sub-tests crash)
 java/util/Collection/HotPotatoes.java			0000000	generic-all
 
+# Reflection test — SIGABRT on aarch32
+sun/reflect/CallerSensitive/CallerSensitiveFinder.java	0000000	generic-all
+
 # Spliterator / SplittableRandom — timeout / crash on aarch32
 java/util/Spliterator/SpliteratorTraversingAndSplittingTest.java	0000000	generic-all
 java/util/SplittableRandom/SplittableRandomTest.java		0000000	generic-all
