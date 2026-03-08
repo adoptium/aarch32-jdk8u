@@ -333,7 +333,10 @@ compiler/inlining/StringConcatInfiniteLoop.java		0000000	generic-all
 compiler/exceptions/SumTest.java			0000000	generic-all
 compiler/exceptions/TestRecursiveReplacedException.java	0000000	generic-all
 compiler/vectorization/TestVectorUnalignedOffset.java	0000000	generic-all
+testlibrary/ctw/test/ClassesDirTest.java		0000000	generic-all
 testlibrary/ctw/test/ClassesListTest.java		0000000	generic-all
+testlibrary/ctw/test/JarDirTest.java			0000000	generic-all
+testlibrary/ctw/test/JarsTest.java			0000000	generic-all
 
 # GC tests — broken pipe on aarch32
 gc/6845368/bigobj.java					0000000	generic-all
@@ -540,5 +543,16 @@ runtime/jsig/Test8017498.sh				0000000	generic-all
 sanity/ExecuteInternalVMTests.java			0000000	generic-all
 sanity/MismatchedWhiteBox/WhiteBox.java			0000000	generic-all
 sanity/WBApi.java					0000000	generic-all
+serviceability/7170638/SDTProbesGNULinuxTest.sh		0000000	generic-all
+serviceability/attach/AttachWithStalePidFile.java	0000000	generic-all
+serviceability/dcmd/ClassLoaderStatsTest.java		0000000	generic-all
+serviceability/dcmd/DynLibDcmdTest.java			0000000	generic-all
+serviceability/dcmd/gc/FinalizerInfoTest.java		0000000	generic-all
+serviceability/dcmd/gc/HeapInfoTest.java		0000000	generic-all
 serviceability/jvmti/DynamicCodeGenerated/DynamicCodeGeneratedTest.sh	0000000	generic-all
+serviceability/jvmti/GetObjectSizeOverflow.java		0000000	generic-all
+serviceability/jvmti/TestRedefineWithUnresolvedClass.java	0000000	generic-all
+serviceability/ParserTest.java				0000000	generic-all
 serviceability/sa/jmap-hashcode/Test8028623.java	0000000	generic-all
+serviceability/sa/jmap-hprof/JMapHProfLargeHeapTest.java	0000000	generic-all
+serviceability/threads/TestFalseDeadLock.java		0000000	generic-all
