@@ -443,6 +443,7 @@ runtime/ErrorHandling/TestOnOutOfMemoryError.java	0000000	generic-all
 runtime/execstack/TestCheckJDK.java			0000000	generic-all
 runtime/Final/PutfieldError.java			0000000	generic-all
 runtime/finalStatic/FinalStatic.java			0000000	generic-all
+runtime/handlerInTry/LoadHandlerInTry.java		0000000	generic-all
 runtime/classFileParserBug/TestEmptyBootstrapMethodsAttr.java	0000000	generic-all
 runtime/CDSCompressedKPtrs/CDSCompressedKPtrsError.java	0000000	generic-all
 runtime/CDSCompressedKPtrs/XShareAuto.java		0000000	generic-all

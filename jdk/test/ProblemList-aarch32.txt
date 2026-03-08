@@ -147,6 +147,11 @@ java/util/stream/test/org/openjdk/tests/java/util/stream/LongPrimitiveOpsTests.j
 java/util/stream/test/org/openjdk/tests/java/util/stream/GroupByOpTest.java	0000000	generic-all
 java/util/stream/test/org/openjdk/tests/java/util/stream/RangeTest.java	0000000	generic-all
 java/util/stream/test/org/openjdk/tests/java/util/stream/PrimitiveAverageOpTest.java	0000000	generic-all
+java/util/IdentityHashMap/Capacity.java			0000000	generic-all
+java/util/IdentityHashMap/DistinctEntrySetElements.java	0000000	generic-all
+java/util/IdentityHashMap/EntrySetIteratorRemoveInvalidatesEntry.java	0000000	generic-all
+java/util/IdentityHashMap/ToArray.java			0000000	generic-all
+java/util/IdentityHashMap/ToString.java			0000000	generic-all
 
 # Collection meta-test — fails on aarch32 (some sub-tests crash)
 java/util/Collection/HotPotatoes.java			0000000	generic-all
