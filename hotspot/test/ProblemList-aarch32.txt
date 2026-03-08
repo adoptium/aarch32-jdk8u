@@ -463,6 +463,7 @@ runtime/memory/ReserveMemory.java			0000000	generic-all
 runtime/memory/RunUnitTestsConcurrently.java		0000000	generic-all
 runtime/memory/StressVirtualSpaceResize.java		0000000	generic-all
 runtime/os/AvailableProcessors.java			0000000	generic-all
+runtime/PerfMemDestroy/PerfMemDestroy.java		0000000	generic-all
 runtime/classFileParserBug/TestEmptyBootstrapMethodsAttr.java	0000000	generic-all
 runtime/CDSCompressedKPtrs/CDSCompressedKPtrsError.java	0000000	generic-all
 runtime/CDSCompressedKPtrs/XShareAuto.java		0000000	generic-all
