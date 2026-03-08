@@ -334,6 +334,17 @@ compiler/exceptions/SumTest.java			0000000	generic-all
 compiler/exceptions/TestRecursiveReplacedException.java	0000000	generic-all
 compiler/vectorization/TestVectorUnalignedOffset.java	0000000	generic-all
 testlibrary/ctw/test/ClassesDirTest.java		0000000	generic-all
+testlibrary_tests/AssertsTest.java			0000000	generic-all
+testlibrary_tests/OutputAnalyzerReportingTest.java	0000000	generic-all
+testlibrary_tests/OutputAnalyzerTest.java		0000000	generic-all
+testlibrary_tests/RedefineClassTest.java		0000000	generic-all
+testlibrary_tests/TestMutuallyExclusivePlatformPredicates.java	0000000	generic-all
+testlibrary_tests/whitebox/vm_flags/BooleanTest.java	0000000	generic-all
+testlibrary_tests/whitebox/vm_flags/DoubleTest.java	0000000	generic-all
+testlibrary_tests/whitebox/vm_flags/IntxTest.java	0000000	generic-all
+testlibrary_tests/whitebox/vm_flags/StringTest.java	0000000	generic-all
+testlibrary_tests/whitebox/vm_flags/Uint64Test.java	0000000	generic-all
+testlibrary_tests/whitebox/vm_flags/UintxTest.java	0000000	generic-all
 testlibrary/ctw/test/ClassesListTest.java		0000000	generic-all
 testlibrary/ctw/test/JarDirTest.java			0000000	generic-all
 testlibrary/ctw/test/JarsTest.java			0000000	generic-all
