@@ -446,6 +446,12 @@ runtime/finalStatic/FinalStatic.java			0000000	generic-all
 runtime/handlerInTry/LoadHandlerInTry.java		0000000	generic-all
 runtime/interned/SanityTest.java			0000000	generic-all
 runtime/invokedynamic/BootstrapMethodErrorTest.java	0000000	generic-all
+runtime/lambda-features/InvokespecialInterface.java	0000000	generic-all
+runtime/lambda-features/PublicStaticInterfaceMethodHandling.java	0000000	generic-all
+runtime/lambda-features/TestConcreteClassWithAbstractMethod.java	0000000	generic-all
+runtime/lambda-features/TestInterfaceInit.java		0000000	generic-all
+runtime/lambda-features/TestInterfaceOrder.java		0000000	generic-all
+runtime/lambda-features/TestStaticandInstance.java	0000000	generic-all
 runtime/classFileParserBug/TestEmptyBootstrapMethodsAttr.java	0000000	generic-all
 runtime/CDSCompressedKPtrs/CDSCompressedKPtrsError.java	0000000	generic-all
 runtime/CDSCompressedKPtrs/XShareAuto.java		0000000	generic-all
