@@ -421,6 +421,13 @@ runtime/CommandLine/PrintGCApplicationConcurrentTime.java	0000000	generic-all
 runtime/CommandLine/TraceExceptionsTest.java		0000000	generic-all
 runtime/CommandLine/UnrecognizedVMOption.java		0000000	generic-all
 runtime/CommandLine/VMOptionWarning.java		0000000	generic-all
+runtime/containers/cgroup/CgroupSubsystemFactory.java	0000000	generic-all
+runtime/containers/cgroup/PlainRead.java		0000000	generic-all
+runtime/containers/docker/DockerBasicTest.java		0000000	generic-all
+runtime/containers/docker/TestCPUAwareness.java		0000000	generic-all
+runtime/containers/docker/TestCPUSets.java		0000000	generic-all
+runtime/containers/docker/TestMemoryAwareness.java	0000000	generic-all
+runtime/containers/docker/TestMisc.java			0000000	generic-all
 runtime/classFileParserBug/TestEmptyBootstrapMethodsAttr.java	0000000	generic-all
 runtime/CDSCompressedKPtrs/CDSCompressedKPtrsError.java	0000000	generic-all
 runtime/CDSCompressedKPtrs/XShareAuto.java		0000000	generic-all
