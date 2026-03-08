@@ -454,6 +454,14 @@ runtime/lambda-features/TestInterfaceOrder.java		0000000	generic-all
 runtime/lambda-features/TestStaticandInstance.java	0000000	generic-all
 runtime/LoadClass/LoadClassNegative.java		0000000	generic-all
 runtime/LoadClass/ShowClassLoader.java			0000000	generic-all
+runtime/memory/LargePages/TestLargePagesFlags.java	0000000	generic-all
+runtime/memory/LargePages/TestLargePageSizeInBytes.java	0000000	generic-all
+runtime/memory/MultiAllocateNullCheck.java		0000000	generic-all
+runtime/memory/ReadFromNoaccessArea.java		0000000	generic-all
+runtime/memory/ReadVMPageSize.java			0000000	generic-all
+runtime/memory/ReserveMemory.java			0000000	generic-all
+runtime/memory/RunUnitTestsConcurrently.java		0000000	generic-all
+runtime/memory/StressVirtualSpaceResize.java		0000000	generic-all
 runtime/classFileParserBug/TestEmptyBootstrapMethodsAttr.java	0000000	generic-all
 runtime/CDSCompressedKPtrs/CDSCompressedKPtrsError.java	0000000	generic-all
 runtime/CDSCompressedKPtrs/XShareAuto.java		0000000	generic-all
