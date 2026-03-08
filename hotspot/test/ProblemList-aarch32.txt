@@ -428,6 +428,12 @@ runtime/containers/docker/TestCPUAwareness.java		0000000	generic-all
 runtime/containers/docker/TestCPUSets.java		0000000	generic-all
 runtime/containers/docker/TestMemoryAwareness.java	0000000	generic-all
 runtime/containers/docker/TestMisc.java			0000000	generic-all
+runtime/contended/Basic.java				0000000	generic-all
+runtime/contended/DefaultValue.java			0000000	generic-all
+runtime/contended/HasNonStatic.java			0000000	generic-all
+runtime/contended/Inheritance1.java			0000000	generic-all
+runtime/contended/OopMaps.java				0000000	generic-all
+runtime/contended/Options.java				0000000	generic-all
 runtime/classFileParserBug/TestEmptyBootstrapMethodsAttr.java	0000000	generic-all
 runtime/CDSCompressedKPtrs/CDSCompressedKPtrsError.java	0000000	generic-all
 runtime/CDSCompressedKPtrs/XShareAuto.java		0000000	generic-all
