@@ -537,5 +537,8 @@ runtime/NMT/VirtualAllocTestType.java			0000000	generic-all
 runtime/jsig/Test8017498.sh				0000000	generic-all
 
 # Serviceability tests — failures on aarch32
+sanity/ExecuteInternalVMTests.java			0000000	generic-all
+sanity/MismatchedWhiteBox/WhiteBox.java			0000000	generic-all
+sanity/WBApi.java					0000000	generic-all
 serviceability/jvmti/DynamicCodeGenerated/DynamicCodeGeneratedTest.sh	0000000	generic-all
 serviceability/sa/jmap-hashcode/Test8028623.java	0000000	generic-all
