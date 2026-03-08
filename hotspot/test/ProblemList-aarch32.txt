@@ -410,6 +410,17 @@ runtime/ClassUnload/KeepAliveSoftReference.java		0000000	generic-all
 runtime/ClassUnload/SuperDependsTest.java		0000000	generic-all
 runtime/ClassUnload/UnloadTest.java			0000000	generic-all
 runtime/classFileParserBug/BadNameAndType.java		0000000	generic-all
+runtime/CommandLine/BooleanFlagWithInvalidValue.java	0000000	generic-all
+runtime/CommandLine/CompilerConfigFileWarning.java	0000000	generic-all
+runtime/CommandLine/ConfigFileParsing.java		0000000	generic-all
+runtime/CommandLine/ConfigFileWarning.java		0000000	generic-all
+runtime/CommandLine/FlagWithInvalidValue.java		0000000	generic-all
+runtime/CommandLine/NonBooleanFlagWithInvalidBooleanPrefix.java	0000000	generic-all
+runtime/CommandLine/PrintFlagsUintxTest.java		0000000	generic-all
+runtime/CommandLine/PrintGCApplicationConcurrentTime.java	0000000	generic-all
+runtime/CommandLine/TraceExceptionsTest.java		0000000	generic-all
+runtime/CommandLine/UnrecognizedVMOption.java		0000000	generic-all
+runtime/CommandLine/VMOptionWarning.java		0000000	generic-all
 runtime/classFileParserBug/TestEmptyBootstrapMethodsAttr.java	0000000	generic-all
 runtime/CDSCompressedKPtrs/CDSCompressedKPtrsError.java	0000000	generic-all
 runtime/CDSCompressedKPtrs/XShareAuto.java		0000000	generic-all
