@@ -434,6 +434,7 @@ runtime/contended/HasNonStatic.java			0000000	generic-all
 runtime/contended/Inheritance1.java			0000000	generic-all
 runtime/contended/OopMaps.java				0000000	generic-all
 runtime/contended/Options.java				0000000	generic-all
+runtime/EnableTracing/TestEnableTracing.java		0000000	generic-all
 runtime/classFileParserBug/TestEmptyBootstrapMethodsAttr.java	0000000	generic-all
 runtime/CDSCompressedKPtrs/CDSCompressedKPtrsError.java	0000000	generic-all
 runtime/CDSCompressedKPtrs/XShareAuto.java		0000000	generic-all
