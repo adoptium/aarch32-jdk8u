@@ -346,7 +346,8 @@ sync_upstream_tags:
             target_branch:$target,
             title:$title,
             description:$desc,
-            remove_source_branch:true}')"
+            remove_source_branch:true,
+            reviewer_ids:[146]}')"
 
       echo ""
       echo "MR opened: ${SYNC_BRANCH} → ${SYNC_BASE_BRANCH}"
