@@ -36,6 +36,13 @@ variables:
   # Parallel jobs – matches the 16-core capacity advertised by the runner tag.
   JOBS: "16"
 
+  WEB_RUN_JOB:
+    description: "Select job to run when triggered from Web UI"
+    value: "build"
+    options:
+      - "build"
+      - "sync"
+
 # ── Build and Test (single job) ──────────────────────────────────────────────
 
 build_and_test_jdk:
@@ -51,8 +58,9 @@ build_and_test_jdk:
   stage: ci
   timeout: 4h
   rules:
+    - if: $CI_PIPELINE_SOURCE == "web" && $WEB_RUN_JOB == "build"
     - if: $CI_PIPELINE_SOURCE == "web"
-      when: manual
+      when: never
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
     - if: $CI_COMMIT_BRANCH
     - when: never
@@ -221,8 +229,7 @@ sync_upstream_tags:
     - zulu
   rules:
     - if: $CI_PIPELINE_SOURCE == "schedule"
-    - if: $CI_PIPELINE_SOURCE == "web"
-      when: manual
+    - if: $CI_PIPELINE_SOURCE == "web" && $WEB_RUN_JOB == "sync"
     - when: never
   variables:
     UPSTREAM_URL: "https://github.com/openjdk/jdk8u.git"
