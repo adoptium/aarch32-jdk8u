@@ -15,7 +15,6 @@ workflow:
     # Suppress redundant branch pipeline when an MR is already open for the branch
     - if: $CI_COMMIT_BRANCH && $CI_OPEN_MERGE_REQUESTS
       when: never
-    - if: $CI_COMMIT_BRANCH
 
 stages:
   - ci
@@ -236,8 +235,8 @@ sync_upstream_tags:
   before_script:
     - apt-get update -qq
     - apt-get install -y --no-install-recommends git curl ca-certificates jq
-    - git config --global user.email "ci-sync-bot@azulsystems.com"
-    - git config --global user.name "CI Sync Bot"
+    - git config --global user.email "Sergey Nazarkin"
+    - git config --global user.name "snazarki@openjdk.org"
 
   script:
     - |
