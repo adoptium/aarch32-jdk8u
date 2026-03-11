@@ -131,6 +131,16 @@ build_and_test_jdk:
       # Confirm the ARM32 JVM starts correctly on this aarch64 kernel
       "${TEST_JDK}/bin/java" -version
 
+      # ── Download ProblemLists from gitlab-ci branch ───────────────────────────
+      echo "Downloading exclude lists from gitlab-ci branch..."
+      mkdir -p "${CI_PROJECT_DIR}/jdk/test" "${CI_PROJECT_DIR}/hotspot/test"
+      curl --fail --silent --show-error --header "JOB-TOKEN: ${CI_JOB_TOKEN}" \
+        "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/repository/files/jdk%2Ftest%2FProblemList-aarch32.txt/raw?ref=gitlab-ci" \
+        -o "${CI_PROJECT_DIR}/jdk/test/ProblemList-aarch32.txt"
+      curl --fail --silent --show-error --header "JOB-TOKEN: ${CI_JOB_TOKEN}" \
+        "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/repository/files/hotspot%2Ftest%2FProblemList-aarch32.txt/raw?ref=gitlab-ci" \
+        -o "${CI_PROJECT_DIR}/hotspot/test/ProblemList-aarch32.txt"
+
       # ── Run jdk tests ─────────────────────────────────────────────────────────
       # Run jdk_lang, jdk_util, jdk_math separately instead of jdk_tier1 because
       # jdk_jdi (com/sun/jdi) fails entirely on aarch32 due to JDWP agent
