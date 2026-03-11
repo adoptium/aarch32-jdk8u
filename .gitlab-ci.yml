@@ -255,12 +255,13 @@ sync_upstream_tags:
       while IFS= read -r TAG; do
         [ -z "${TAG}" ] && continue
         if ! git merge-base --is-ancestor "${TAG}" "origin/${SYNC_BASE_BRANCH}" 2>/dev/null; then
-          NEW_TAGS="${NEW_TAGS}${TAG}"$'\n'
+          NEW_TAGS="${TAG}"$'\n'"${NEW_TAGS}"
+        else
+          break
         fi
-      done < <(git ls-remote --tags upstream \
+      done < <(git ls-remote --tags --sort=-v:refname upstream \
                   | grep -v '\^{}' \
-                  | sed 's|.*refs/tags/||' \
-                  | sort -V)
+                  | sed 's|.*refs/tags/||')
 
       # Remove trailing blank lines
       NEW_TAGS=$(printf '%s' "${NEW_TAGS}" | sed '/^[[:space:]]*$/d')
