@@ -134,10 +134,10 @@ build_and_test_jdk:
       # ── Download ProblemLists from gitlab-ci branch ───────────────────────────
       echo "Downloading exclude lists from gitlab-ci branch..."
       mkdir -p "${CI_PROJECT_DIR}/jdk/test" "${CI_PROJECT_DIR}/hotspot/test"
-      curl --fail --silent --show-error --header "JOB-TOKEN: ${CI_JOB_TOKEN}" \
+      curl --fail --silent --show-error \
         "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/repository/files/jdk%2Ftest%2FProblemList-aarch32.txt/raw?ref=gitlab-ci" \
         -o "${CI_PROJECT_DIR}/jdk/test/ProblemList-aarch32.txt"
-      curl --fail --silent --show-error --header "JOB-TOKEN: ${CI_JOB_TOKEN}" \
+      curl --fail --silent --show-error \
         "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/repository/files/hotspot%2Ftest%2FProblemList-aarch32.txt/raw?ref=gitlab-ci" \
         -o "${CI_PROJECT_DIR}/hotspot/test/ProblemList-aarch32.txt"
 
