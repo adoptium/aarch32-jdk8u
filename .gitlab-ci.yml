@@ -235,8 +235,8 @@ sync_upstream_tags:
   before_script:
     - apt-get update -qq
     - apt-get install -y --no-install-recommends git curl ca-certificates jq
-    - git config --global user.email "Sergey Nazarkin"
-    - git config --global user.name "snazarki@openjdk.org"
+    - git config --global user.name "Sergey Nazarkin"
+    - git config --global user.email "snazarki@openjdk.org"
 
   script:
     - |
