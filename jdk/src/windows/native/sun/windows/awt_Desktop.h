@@ -1,10 +1,12 @@
 /*
- * Copyright (c) 2018, 2026, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2026, IBM Corporation. All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
+ * published by the Free Software Foundation.  Oracle designates this
+ * particular file as subject to the "Classpath" exception as provided
+ * by Oracle in the LICENSE file that accompanied this code.
  *
  * This code is distributed in the hope that it will be useful, but WITHOUT
  * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
@@ -21,29 +23,14 @@
  * questions.
  */
 
-/*
- * @test
- * @requires os.family == "linux"
- * @library /test/lib /
- * @run main TestCgroupMetrics
- */
+#ifndef AWT_DESKTOP_H
+#define AWT_DESKTOP_H
 
-import jdk.test.lib.containers.cgroup.MetricsTester;
-import jdk.internal.platform.Metrics;
+// Work around build failure on 32-bit Windows.
+#if !defined(_WIN64)
+#ifndef ASSOCF_NONE
+#define ASSOCF_NONE 0x00000000
+#endif // ASSOCF_NONE
+#endif // 32 bit Windows
 
-public class TestCgroupMetrics {
-
-    public static void main(String[] args) throws Exception {
-        // If cgroups is not configured, report success.
-        Metrics metrics = Metrics.systemMetrics();
-        if (metrics == null) {
-            System.out.println("TEST PASSED!!!");
-            return;
-        }
-
-        MetricsTester metricsTester = new MetricsTester();
-        metricsTester.testAll(metrics);
-        System.out.println("TEST PASSED!!!");
-    }
-
-}
+#endif // AWT_DESKTOP_H
