@@ -297,7 +297,7 @@ sync_upstream_tags:
       while IFS= read -r TAG; do
         [ -z "${TAG}" ] && continue
         echo "=== Merging ${TAG} ==="
-        git merge --no-ff -m "Merge tag \'${TAG}\'" "${TAG}"
+        git merge --no-ff -m "Merge tag '${TAG}'" "${TAG}"
       done <<< "${NEW_TAGS}"
 
       # ── Compose MR title and description ──────────────────────────────────
