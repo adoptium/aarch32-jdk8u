@@ -273,9 +273,10 @@ sync_upstream_tags:
         else
           break
         fi
-      done < <(git ls-remote --tags --sort=-v:refname upstream \
+      done < <(git ls-remote --tags upstream \
                   | grep -v '\^{}' \
-                  | sed 's|.*refs/tags/||')
+                  | sed 's|.*refs/tags/||' \
+                  | sort -V -r)
 
       # Remove trailing blank lines
       NEW_TAGS=$(printf '%s' "${NEW_TAGS}" | sed '/^[[:space:]]*$/d')
