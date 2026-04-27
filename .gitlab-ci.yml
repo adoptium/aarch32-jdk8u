@@ -262,22 +262,25 @@ sync_upstream_tags:
       git fetch origin "${SYNC_BASE_BRANCH}"
 
       # ── Identify upstream tags not yet merged into the base branch ────────
-      # Using merge-base --is-ancestor is more accurate than comparing tag
-      # name lists: it catches tags that were merged without being mirrored
-      # locally, and skips tags whose commits are already reachable.
+      # Use locally-fetched tags (git tag -l) rather than a second ls-remote
+      # call; git fetch upstream --tags already populated the local tag store.
+      echo "DEBUG: origin/${SYNC_BASE_BRANCH} = $(git rev-parse "origin/${SYNC_BASE_BRANCH}" 2>/dev/null || echo UNRESOLVED)"
+      echo "DEBUG: local tags matching jdk8u[0-9]* (last 10 by version):"
+      git tag -l 'jdk8u[0-9]*' | sort -V | tail -10
+
       NEW_TAGS=""
       while IFS= read -r TAG; do
         [ -z "${TAG}" ] && continue
-        if ! git merge-base --is-ancestor "${TAG}" "origin/${SYNC_BASE_BRANCH}" 2>/dev/null; then
+        MB_RC=0
+        git merge-base --is-ancestor "${TAG}" "origin/${SYNC_BASE_BRANCH}" 2>/dev/null || MB_RC=$?
+        echo "DEBUG: ${TAG} -> merge-base RC=${MB_RC}"
+        if [ "${MB_RC}" -ne 0 ]; then
           NEW_TAGS="${TAG}"$'\n'"${NEW_TAGS}"
         else
+          echo "DEBUG: ${TAG} is ancestor of origin/${SYNC_BASE_BRANCH} — stopping"
           break
         fi
-      done < <(git ls-remote --tags upstream \
-                  | grep -v '\^{}' \
-                  | grep 'refs/tags/jdk8u[0-9]' \
-                  | sed 's|.*refs/tags/||' \
-                  | sort -V -r)
+      done < <(git tag -l 'jdk8u[0-9]*' | sort -V -r)
 
       # Remove trailing blank lines
       NEW_TAGS=$(printf '%s' "${NEW_TAGS}" | sed '/^[[:space:]]*$/d')
