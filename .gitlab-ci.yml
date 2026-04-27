@@ -275,6 +275,7 @@ sync_upstream_tags:
         fi
       done < <(git ls-remote --tags upstream \
                   | grep -v '\^{}' \
+                  | grep 'refs/tags/jdk8u[0-9]' \
                   | sed 's|.*refs/tags/||' \
                   | sort -V -r)
 
