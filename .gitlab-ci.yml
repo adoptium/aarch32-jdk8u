@@ -262,28 +262,36 @@ sync_upstream_tags:
       git fetch origin "${SYNC_BASE_BRANCH}"
 
       # ── Identify upstream tags not yet merged into the base branch ────────
-      # Strategy: parse the most recent "Merge tag 'jdk8uXXX'" commit message
-      # on the base branch to find the last synced tag, then use awk to select
-      # everything after it in version-sorted order from the local tag store.
-      # This avoids git-merge-base entirely and is not affected by annotated-tag
-      # object availability.
-      LAST_SYNCED=$(git log --format="%s" "origin/${SYNC_BASE_BRANCH}" \
-                    | grep -m1 "^Merge tag 'jdk8u" \
-                    | sed "s/Merge tag '\\(jdk8u[^']*\\)'/\\1/") || true
-      echo "Last synced tag (from git log): '${LAST_SYNCED}'"
-      echo "Available upstream tags (last 10 by version):"
-      git tag -l 'jdk8u[0-9]*' | sort -V | tail -10
+      # Using merge-base --is-ancestor is more accurate than comparing tag
+      # name lists: it catches tags that were merged without being mirrored
+      # locally, and skips tags whose commits are already reachable.
+      #
+      # We do NOT break on the first ancestor found. Maintenance-release tags
+      # (e.g. jdk8u492-b07..ga) are cut on a parallel branch AFTER the main
+      # series advanced to jdk8u502.  They sort between jdk8u502-b00 (already
+      # in master) and jdk8u492-b06 (the last merged mainline tag), so a simple
+      # break on the first ancestor would skip them entirely.  Instead we stop
+      # only after seeing CONSEC_ANCESTOR_LIMIT consecutive ancestors, which is
+      # enough to confirm we have gone far enough back in the version-sorted
+      # list without iterating through the entire upstream tag history.
+      CONSEC_ANCESTOR_LIMIT=3
+      CONSEC_ANCESTOR=0
+      NEW_TAGS=""
+      while IFS= read -r TAG; do
+        [ -z "${TAG}" ] && continue
+        if ! git merge-base --is-ancestor "${TAG}" "origin/${SYNC_BASE_BRANCH}" 2>/dev/null; then
+          NEW_TAGS="${TAG}"$'\n'"${NEW_TAGS}"
+          CONSEC_ANCESTOR=0
+        else
+          CONSEC_ANCESTOR=$((CONSEC_ANCESTOR + 1))
+          [ "${CONSEC_ANCESTOR}" -ge "${CONSEC_ANCESTOR_LIMIT}" ] && break
+        fi
+      done < <(git ls-remote --tags --sort=-v:refname upstream \
+                  | grep -v '\^{}' \
+                  | sed 's|.*refs/tags/||')
 
-      if [ -z "${LAST_SYNCED}" ]; then
-        echo "ERROR: Cannot determine last synced tag from git log on origin/${SYNC_BASE_BRANCH}"
-        exit 1
-      fi
-
-      # Select tags that come AFTER LAST_SYNCED in version sort (ascending).
-      # The result is already in oldest-first order, ready for sequential merging.
-      NEW_TAGS=$(git tag -l 'jdk8u[0-9]*' | sort -V | \
-                 awk -v last="${LAST_SYNCED}" 'found{print} $0==last{found=1}')
-      echo "New upstream tags to merge: ${NEW_TAGS:-  (none)}"
+      # Remove trailing blank lines
+      NEW_TAGS=$(printf '%s' "${NEW_TAGS}" | sed '/^[[:space:]]*$/d')
 
       if [ -z "${NEW_TAGS}" ]; then
         echo "Already up to date – no unmerged upstream tags found."
