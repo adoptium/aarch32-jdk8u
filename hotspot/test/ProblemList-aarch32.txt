@@ -53,6 +53,7 @@ compiler/arguments/TestUseCountLeadingZerosInstructionOnSupportedCPU.java	000000
 compiler/arguments/TestUseCountLeadingZerosInstructionOnUnsupportedCPU.java	0000000	generic-all
 compiler/arguments/TestUseCountTrailingZerosInstructionOnSupportedCPU.java	0000000	generic-all
 compiler/arguments/TestUseCountTrailingZerosInstructionOnUnsupportedCPU.java	0000000	generic-all
+compiler/c1/TestTooManyVirtualRegistersMain.java	0000000	generic-all
 compiler/c2/FloatingPointFoldingTest.java		0000000	generic-all
 compiler/classUnloading/anonymousClass/TestAnonymousClassUnloading.java	0000000	generic-all
 compiler/codecache/CheckReservedInitialCodeCacheSizeArgOrder.java	0000000	generic-all
