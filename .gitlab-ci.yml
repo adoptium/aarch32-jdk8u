@@ -152,7 +152,6 @@ build_and_test_jdk:
         -agentvm \
         -verbose:fail,error \
         -xml \
-        -timeout:0.25 \
         -exclude:"${CI_PROJECT_DIR}/jdk/test/ProblemList-aarch32.txt" \
         -r:"${CI_PROJECT_DIR}/jtreg-results/jdk/JTreport" \
         -w:"${CI_PROJECT_DIR}/jtreg-results/jdk/JTwork" \
@@ -166,7 +165,6 @@ build_and_test_jdk:
          -agentvm \
          -verbose:fail,error \
          -xml \
-         -timeout:0.25 \
          -exclude:"${CI_PROJECT_DIR}/hotspot/test/ProblemList-aarch32.txt" \
          -r:"${CI_PROJECT_DIR}/jtreg-results/hotspot/JTreport" \
          -w:"${CI_PROJECT_DIR}/jtreg-results/hotspot/JTwork" \
