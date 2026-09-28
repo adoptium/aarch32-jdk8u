@@ -46,7 +46,7 @@ variables:
 # ── Build and Test (single job) ──────────────────────────────────────────────
 
 build_and_test_jdk:
-  image: debian:11
+  image: debian:12
   tags:
     - linux
     - k8s
