@@ -73,7 +73,7 @@ build_and_test_jdk:
       DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
         ca-certificates rsync make gcc g++ zip unzip autoconf \
         file wget curl libz-dev procps \
-        gcc-10-arm-linux-gnueabihf g++-10-arm-linux-gnueabihf \
+        gcc-11-arm-linux-gnueabihf g++-11-arm-linux-gnueabihf \
         libx11-dev:armhf libxext-dev:armhf libxrender-dev:armhf \
         libxrandr-dev:armhf libxtst-dev:armhf libxt-dev:armhf \
         libcups2-dev:armhf libfontconfig1-dev:armhf libasound2-dev:armhf \
@@ -83,11 +83,11 @@ build_and_test_jdk:
     - |
       update-alternatives \
         --install /usr/bin/arm-linux-gnueabihf-gcc arm-linux-gnueabihf-gcc \
-        /usr/bin/arm-linux-gnueabihf-gcc-10 100
+        /usr/bin/arm-linux-gnueabihf-gcc-11 100
     - |
       update-alternatives \
         --install /usr/bin/arm-linux-gnueabihf-g++ arm-linux-gnueabihf-g++ \
-        /usr/bin/arm-linux-gnueabihf-g++-10 100
+        /usr/bin/arm-linux-gnueabihf-g++-11 100
     # ── 3. Download and unpack the Zulu 8 aarch64 boot JDK ───────────────────
     - wget --no-verbose -O "${BOOT_JDK_ARCHIVE}" "${BOOT_JDK_URL}"
     - tar -xzf "${BOOT_JDK_ARCHIVE}"
