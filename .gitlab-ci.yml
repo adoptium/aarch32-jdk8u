@@ -77,7 +77,7 @@ build_and_test_jdk:
         libx11-dev:armhf libxext-dev:armhf libxrender-dev:armhf \
         libxrandr-dev:armhf libxtst-dev:armhf libxt-dev:armhf \
         libcups2-dev:armhf libfontconfig1-dev:armhf libasound2-dev:armhf \
-        libfreetype6-dev:armhf libpng-dev:armhf libstdc++-10-dev:armhf \
+        libfreetype6-dev:armhf libpng-dev:armhf libstdc++-dev:armhf \
         libz-dev:armhf
     # ── 2. Register versioned cross-compiler as the default alternative ───────
     - |
