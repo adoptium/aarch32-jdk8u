@@ -63,6 +63,7 @@ build_and_test_jdk:
     - when: never
 
   before_script:
+    - set -x
     - hostname -I
     # ── 1. Add ARM hard-float (armhf) architecture and install packages ──────
     #    The *-dev:armhf packages pull in their runtime counterparts as
